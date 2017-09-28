@@ -256,7 +256,7 @@
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#解释如下"><span class="section table-of-contents-text">解释如下:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#改变文件属性与权限的重要命令："><span class="section table-of-contents-text">改变文件属性与权限的重要命令：</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#改变文件属性与权限的重要命令："><span class="section table-of-contents-text">改变文件属性与权限的重要命令：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#文件的默认权限与隐藏权限"><span class="section table-of-contents-text">文件的默认权限与隐藏权限</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#文件的默认权限：umask"><span class="section table-of-contents-text">文件的默认权限：umask</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#文件的隐藏属性：chattr，lsattr"><span class="section table-of-contents-text">文件的隐藏属性：chattr，lsattr</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#文件的特殊权限：SUID，SGID，SBIT"><span class="section table-of-contents-text"></span></a></li></ol>
 </div>
 
 
@@ -264,7 +264,7 @@
                 <p>在linux中某个文件（目录）的权限有三种：可读（r），可写（w），可执行（x）</p>
 <p><strong>注意：权限对目录和文件的理解上是不同的，详情请看<a href="https://aluckycoder.github.io/2017/09/28/%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9A%84%E6%84%8F%E4%B9%89/" target="_blank" rel="external">目录与文件权限的意义</a></strong><br>在linux输入如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -al</div></pre></td></tr></table></figure></p>
 <p>可以看到如下结果：<br><code>drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:33 ./</code><br><code>drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 12:16 ../</code><br><code>drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:53 .deploy_git/</code><br><code>-rw-r--r-- 1 LuckyCoder 197121     71 9月  25 20:06 .gitignore</code><br><code>-rw-r--r-- 1 LuckyCoder 197121    117 9月  25 20:06 .gitmodules</code></p>
-<h2 id="解释如下"><a href="#解释如下" class="headerlink" title="解释如下:"></a>解释如下:</h2><p><strong>第一列代表的是文件的类型与权限</strong>(本篇主要对此进行叙述)<br>第二列代表的是连接数，表示有多少文件名连接到这个节点（i-node）<br>第三列表示这个文件（或目录）的“所有者账号”<br>第四列表示这个文件的所属用户组<br>第五列为这个文件的容量大小，默认单位是B<br>第六列为这个文件的创建日期或者最近的修改日期<br>第七列为该文件名</p>
+<p>解释如下:<br><strong>第一列代表的是文件的类型与权限</strong>(本篇主要对此进行叙述)<br>第二列代表的是连接数，表示有多少文件名连接到这个节点（i-node）<br>第三列表示这个文件（或目录）的“所有者账号”<br>第四列表示这个文件的所属用户组<br>第五列为这个文件的容量大小，默认单位是B<br>第六列为这个文件的创建日期或者最近的修改日期<br>第七列为该文件名</p>
 <p>第一个字符表示这个文件是“目录，文件或链接文件等”</p>
 <table>
 <thead>
@@ -328,7 +328,9 @@
 </tr>
 </tbody>
 </table>
-
+<h2 id="文件的默认权限与隐藏权限"><a href="#文件的默认权限与隐藏权限" class="headerlink" title="文件的默认权限与隐藏权限"></a>文件的默认权限与隐藏权限</h2><h3 id="文件的默认权限：umask"><a href="#文件的默认权限：umask" class="headerlink" title="文件的默认权限：umask"></a>文件的默认权限：umask</h3><p><code>[luckycoder@localhost ~]$ umask</code><br><code>0002</code><br><code>[luckycoder@localhost ~]$ umask -S</code><br><code>u=rwx,g=rwx,o=rx</code><br>这个一目了然，不多加叙述了，主要记住，设置哪个位置的数字，对应着剥夺某个权限就可以了，主要应该注意的就是那个最前面的0，涉及到<a href="#文件的特殊权限">特殊权限</a></p>
+<h3 id="文件的隐藏属性：chattr，lsattr"><a href="#文件的隐藏属性：chattr，lsattr" class="headerlink" title="文件的隐藏属性：chattr，lsattr"></a>文件的隐藏属性：chattr，lsattr</h3><p><strong>需要注意的是chattr命令只能在Ext2/Ext3/Ext4的文件系统上才能生效</strong><br><code>[luckycoder@localhost test]$ cd /home/luckycoder</code><br><code>[luckycoder@localhost test]$ mkdir test</code><br><code>[luckycoder@localhost test]$ cd test</code><br><code>[luckycoder@localhost test]$ touch aaa</code><br><code>[luckycoder@localhost test]$ su root</code><br><code>[luckycoder@localhost test]$ su root</code><br><code>密码：</code><br><code>[root@localhost test]# ls -al</code><br><code>总用量 8</code><br><code>drwxrwxr-x.  2 luckycoder luckycoder 4096 9月  29 06:48 .</code><br><code>drwx------. 16 luckycoder luckycoder 4096 9月  29 06:54 ..</code><br><code>-rw-rw-r--.  1 luckycoder luckycoder    0 9月  29 06:48 aaa</code><br><code>[root@localhost test]# chattr +i aaa</code><br><code>[root@localhost test]# exit</code><br><code>exit</code><br><code>[luckycoder@localhost test]$ rm aaa</code><br><code>rm：是否删除有写保护的普通空文件 &quot;aaa&quot;？y</code><br><code>rm: 无法删除&quot;aaa&quot;: 不允许的操作</code><br><code>[luckycoder@localhost test]$ lsattr aaa</code><br><code>----i--------e-- aaa</code><br>具体的参数可以chattr –help来查阅</p>
+<h2 id="文件的特殊权限：SUID，SGID，SBIT"></h2>
                 
 <p class="pink-link-context">
     <a href="/2017/09/28/目录与文件权限的意义/" rel="next" title="目录与文件权限的意义">
