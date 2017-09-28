@@ -7,13 +7,18 @@
 
     
 
-    <title>读书 | programIng change the world!</title>
+    <title>linux文件权限简要记录 | programIng change the world!</title>
     <meta name="author" content="John Doe">
+    
+    <meta name="description" content="在linux中某个文件（目录）的权限有三种：可读（r），可写（w），可执行（x）
+注意：权限对目录和文件的理解上是不同的，详情请看目录与文件权限的意义在linux输入如下命令1ls -al
+可以看到如下结果
+解释如下:第一列代表的是文件的类型与权限(本篇主要对此进行叙述)第二列代表的是连接数，表示有">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="读书"/>
+    <meta property="og:title" content="linux文件权限简要记录"/>
     <meta property="og:site_name" content="LuckyCoder"/>
 
     
@@ -206,58 +211,166 @@
 
 
     <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/centos7/">centos7</a>
+
+
         
 
-<div class="container main-container">
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
     
-        <div class="">
-            <div class="row">
-                <ul class="tabs ">
-                    
-                        
-                        <li class="tab col s4 ">
-                            <a class="pink-text " href="#readed">已读(0)</a>
-                        </li>
-                        
-                    
-                        
-                        <li class="tab col s4 ">
-                            <a class="pink-text " href="#reading">在读(0)</a>
-                        </li>
-                        
-                    
-                        
-                        <li class="tab col s4 ">
-                            <a class="pink-text " href="#wanted">想读(0)</a>
-                        </li>
-                        
-                    
-                </ul>
+        <h1>linux文件权限简要记录</h1>
+    
+
+
             </div>
+            <time class="pink-link-context" datetime="2017-09-28T01:52:12.000Z"><a href="/2017/09/28/linux文件权限简要记录/">2017-09-28</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
 
             
-                <div id="readed" class="row" style="margin-top: 20px;">
-                    
-                    
-                </div>
-            
-                <div id="reading" class="row" style="margin-top: 20px;">
-                    
-                    
-                </div>
-            
-                <div id="wanted" class="row" style="margin-top: 20px;">
-                    
-                    
-                </div>
-            
-
-        </div>
+    <div class="tags-row">
         
+            <a href="/tags/文件权限/" class="chip pink lighten-1">文件权限</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#解释如下"><span class="section table-of-contents-text">解释如下:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#改变文件属性与权限的重要命令："><span class="section table-of-contents-text">改变文件属性与权限的重要命令：</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>在linux中某个文件（目录）的权限有三种：可读（r），可写（w），可执行（x）</p>
+<p><strong>注意：权限对目录和文件的理解上是不同的，详情请看<a href="https://aluckycoder.github.io/2017/09/28/%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9A%84%E6%84%8F%E4%B9%89/" target="_blank" rel="external">目录与文件权限的意义</a></strong><br>在linux输入如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -al</div></pre></td></tr></table></figure></p>
+<p>可以看到如下结果</p>
+<h2 id="解释如下"><a href="#解释如下" class="headerlink" title="解释如下:"></a>解释如下:</h2><p><strong>第一列代表的是文件的类型与权限</strong>(本篇主要对此进行叙述)<br>第二列代表的是连接数，表示有多少文件名连接到这个节点（i-node）<br>第三列表示这个文件（或目录）的“所有者账号”<br>第四列表示这个文件的所属用户组<br>第五列为这个文件的容量大小，默认单位是B<br>第六列为这个文件的创建日期或者最近的修改日期<br>第七列为该文件名</p>
+<p>第一个字符表示这个文件是“目录，文件或链接文件等”<br>字符|含义<br>d | 目录</p>
+<ul>
+<li>| 文件<br>l | 连接文件（linkfile）<br>b | 设备文件里面的可供存储的接口设备<br>c | 设备文件里面的串行端口设备，如键盘，鼠标（一次性读取设备）</li>
+</ul>
+<p>接下来的字符中以三个为一组，且均为”rwx”的3个参数的组合<br><strong>第一组为“文件所有者的权限”</strong><br><strong>第二组为“同用户组的权限”</strong><br><strong>第三组为“其他非本用户组的权限”</strong></p>
+<hr>
+<h2 id="改变文件属性与权限的重要命令："><a href="#改变文件属性与权限的重要命令：" class="headerlink" title="改变文件属性与权限的重要命令："></a>改变文件属性与权限的重要命令：</h2><p>命令|命令格式|含义|注意<br>chgrp|chgrp 用户组名 文件或者目录|改变文件所属用户组|要被改变的组名必须要在/etc/group文件中存在<br>chown|chown 账号名称 文件或者目录|改变文件所有者|要被改变的所有者必须在/etc/passwd文件中存在<br>chmod|chmod rwx 文件或者目录|改变文件的权限|无特别注意事项，请确保正确理解其参数含义即可</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">排序方法</th>
+<th style="text-align:left">平均情况</th>
+<th style="text-align:left">最好情况</th>
+<th style="text-align:left">最坏情况</th>
+<th style="text-align:left">辅助空间</th>
+<th style="text-align:left">稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">冒泡排序</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(1)</td>
+<td style="text-align:left">稳定</td>
+</tr>
+<tr>
+<td style="text-align:left">简单选择</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(1)</td>
+<td style="text-align:left">稳定</td>
+</tr>
+<tr>
+<td style="text-align:left">直接插入</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(n)</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(1)</td>
+<td style="text-align:left">稳定</td>
+</tr>
+<tr>
+<td style="text-align:left">希尔排序</td>
+<td style="text-align:left">O(nlogn)~O(n²)</td>
+<td style="text-align:left">O(n^1.3)</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(1)</td>
+<td style="text-align:left">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:left">堆排序</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(1)</td>
+<td style="text-align:left">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:left">归并排序</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(n)</td>
+<td style="text-align:left">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:left">快速排序</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(nlogn)</td>
+<td style="text-align:left">O(n²)</td>
+<td style="text-align:left">O(nlogn)~O(n)</td>
+<td style="text-align:left">不稳定</td>
+</tr>
+</tbody>
+</table>
+
+                
+<p class="pink-link-context">
+    <a href="/2017/09/28/目录与文件权限的意义/" rel="next" title="目录与文件权限的意义">
+    上一篇：目录与文件权限的意义
+  </a>
+</p>
 
 
 
-    
+<p class="pink-link-context">
+    <a href="/2017/09/26/centos7-grub2-添加win10引导驱动/" rel="next" title="centos7 grub2 添加win10引导驱动">
+    下一篇：centos7 grub2 添加win10引导驱动
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
 </div>
 
         <div class="fixed-action-btn float-sitemap">
