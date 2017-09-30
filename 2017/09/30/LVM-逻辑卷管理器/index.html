@@ -262,13 +262,77 @@ LVM（Logical Volume Manager）简述LVM">
 <h3 id="逻辑卷组（LV）"><a href="#逻辑卷组（LV）" class="headerlink" title="逻辑卷组（LV）"></a><strong>逻辑卷组（LV）</strong></h3><p>终于到这最后一步了，最终由VG切成的LV才能够被格式化使用的类似分区的东西了，从能能公我们挂在使用，需要注意的是LVM的大小不是连续的，这要根据PE的大小情况而定</p>
 <h2 id="具体的操作流程"><a href="#具体的操作流程" class="headerlink" title="具体的操作流程"></a>具体的操作流程</h2><ol>
 <li><strong>分区阶段：</strong><br>首先将需要进行添加到LVM中的分区用fdisk工具将其系统标识符改为8e（fdisk工具的使用比较简单，在此不多加赘述）</li>
-<li><p><strong>PV阶段：</strong></p>
-<p>| 操作 | 含义 |<br>| :—- | :—- |<br>| pvcreate | 将分区建立成为PV |<br>| pvscan | 查看系统里面所有具有PV的磁盘 |<br>| pvdisplay | 显示出目前系统上PV的状态 |<br>| pvremove | 将PV属性移除 |</p>
-</li>
-<li><p><strong>VG阶段</strong></p>
-<p>| 操作 | 含义 |<br>| :—- | :—- |<br>| vgcreate | 建立VG |<br>| vgscan | 查看系统里面所有 VG |<br>| vgdisplay | 显示目前系统上面的 VG 状态 |<br>| vgextend | 在 VG 内增加额外的 PV |<br>| vgreduce | 在 VG 内移除 PV |<br>| vgchange | 设定 VG 是否启动 (active) |<br>| vgremove | 删除一个 VG |</p>
-<p>注意vgcreate的命令使用格式，可以用<code>vgcreate -h</code>进行查询，VG的命名由自己设定</p>
-</li>
+<li><strong>PV阶段：</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">pvcreate</td>
+<td style="text-align:left">将分区建立成为PV</td>
+</tr>
+<tr>
+<td style="text-align:left">pvscan</td>
+<td style="text-align:left">查看系统里面所有具有PV的磁盘</td>
+</tr>
+<tr>
+<td style="text-align:left">pvdisplay</td>
+<td style="text-align:left">显示出目前系统上PV的状态</td>
+</tr>
+<tr>
+<td style="text-align:left">pvremove</td>
+<td style="text-align:left">将PV属性移除</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>VG阶段</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">vgcreate</td>
+<td style="text-align:left">建立VG</td>
+</tr>
+<tr>
+<td style="text-align:left">vgscan</td>
+<td style="text-align:left">查看系统里面所有 VG</td>
+</tr>
+<tr>
+<td style="text-align:left">vgdisplay</td>
+<td style="text-align:left">显示目前系统上面的 VG 状态</td>
+</tr>
+<tr>
+<td style="text-align:left">vgextend</td>
+<td style="text-align:left">在 VG 内增加额外的 PV</td>
+</tr>
+<tr>
+<td style="text-align:left">vgreduce</td>
+<td style="text-align:left">在 VG 内移除 PV</td>
+</tr>
+<tr>
+<td style="text-align:left">vgchange</td>
+<td style="text-align:left">设定 VG 是否启动 (active)</td>
+</tr>
+<tr>
+<td style="text-align:left">vgremove</td>
+<td style="text-align:left">删除一个 VG</td>
+</tr>
+</tbody>
+</table>
+<p> 注意vgcreate的命令使用格式，可以用<code>vgcreate -h</code>进行查询，VG的命名由自己设定</p>
+<ol>
 <li><strong>LV阶段</strong></li>
 </ol>
 <table>
