@@ -12,7 +12,8 @@
     
     <meta name="description" content="在linux中某个文件（目录）的权限有三种：可读（r），可写（w），可执行（x）
 注意：权限对目录和文件的理解上是不同的，详情请看目录与文件权限的意义在linux输入如下命令1ls -al
-可以看到如下结果：    drwxr-xr-x 1 LuckyCoder 197121      0 9月  ">
+可以看到如下结果：
+drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 ">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -263,7 +264,13 @@
             <div class="entry pink-link-context">
                 <p>在linux中某个文件（目录）的权限有三种：可读（r），可写（w），可执行（x）</p>
 <p><strong>注意：权限对目录和文件的理解上是不同的，详情请看<a href="https://aluckycoder.github.io/2017/09/28/%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9A%84%E6%84%8F%E4%B9%89/" target="_blank" rel="external">目录与文件权限的意义</a></strong><br>在linux输入如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -al</div></pre></td></tr></table></figure></p>
-<p>可以看到如下结果：<br>    drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:33 ./<br>    drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 12:16 ../<br>    drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:53 .deploy_git/<br>    -rw-r–r– 1 LuckyCoder 197121     71 9月  25 20:06 .gitignore<br>    -rw-r–r– 1 LuckyCoder 197121    117 9月  25 20:06 .gitmodules<br>解释如下:<br><strong>第一列代表的是文件的类型与权限</strong>(本篇主要对此进行叙述)<br>第二列代表的是连接数，表示有多少文件名连接到这个节点（i-node）<br>第三列表示这个文件（或目录）的“所有者账号”<br>第四列表示这个文件的所属用户组<br>第五列为这个文件的容量大小，默认单位是B<br>第六列为这个文件的创建日期或者最近的修改日期<br>第七列为该文件名<br>第一个字符表示这个文件是“目录，文件或链接文件等”</p>
+<p>可以看到如下结果：</p>
+<pre><code>drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:33 ./                 
+drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 12:16 ../                
+drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:53 .deploy_git/ 
+-rw-r--r-- 1 LuckyCoder 197121     71 9月  25 20:06 .gitignore     
+-rw-r--r-- 1 LuckyCoder 197121    117 9月  25 20:06 .gitmodules
+</code></pre><p>解释如下:<br><strong>第一列代表的是文件的类型与权限</strong>(本篇主要对此进行叙述)<br>第二列代表的是连接数，表示有多少文件名连接到这个节点（i-node）<br>第三列表示这个文件（或目录）的“所有者账号”<br>第四列表示这个文件的所属用户组<br>第五列为这个文件的容量大小，默认单位是B<br>第六列为这个文件的创建日期或者最近的修改日期<br>第七列为该文件名<br>第一个字符表示这个文件是“目录，文件或链接文件等”</p>
 <table>
 <thead>
 <tr>
