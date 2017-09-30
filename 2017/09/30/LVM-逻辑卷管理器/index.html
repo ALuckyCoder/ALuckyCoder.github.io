@@ -249,28 +249,65 @@ LVM（Logical Volume Manager）简述LVM">
             
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#胡扯中orz"><span class="section table-of-contents-text">胡扯中orz:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#LVM（Logical-Volume-Manager）简述"><span class="section table-of-contents-text">LVM（Logical Volume Manager）简述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#与LVM相联系的概念：物理卷（PV），物理块（PE），物理卷组（VG），逻辑卷（LV）"><span class="section table-of-contents-text">与LVM相联系的概念：物理卷（PV），物理块（PE），物理卷组（VG），逻辑卷（LV）</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷（PV）"><span class="section table-of-contents-text">物理卷（PV）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理块（PE）"><span class="section table-of-contents-text">物理块（PE）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷组（VG）"><span class="section table-of-contents-text">物理卷组（VG）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#逻辑卷组（LV）"><span class="section table-of-contents-text">逻辑卷组（LV）</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#具体的操作流程"><span class="section table-of-contents-text">具体的操作流程</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#胡扯中orz"><span class="section table-of-contents-text">胡扯中orz:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#LVM（Logical-Volume-Manager）简述"><span class="section table-of-contents-text">LVM（Logical Volume Manager）简述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#与LVM相联系的概念：PV，PE，VG，LV"><span class="section table-of-contents-text">与LVM相联系的概念：PV，PE，VG，LV</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷（PV）"><span class="section table-of-contents-text">物理卷（PV）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理块（PE）"><span class="section table-of-contents-text">物理块（PE）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷组（VG）"><span class="section table-of-contents-text">物理卷组（VG）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#逻辑卷组（LV）"><span class="section table-of-contents-text">逻辑卷组（LV）</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#具体的操作流程"><span class="section table-of-contents-text">具体的操作流程</span></a></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
                 <h2 id="胡扯中orz"><a href="#胡扯中orz" class="headerlink" title="胡扯中orz:"></a>胡扯中orz:</h2><p>之前弄完centos7的时候发现系统开机十分慢，当然我至今没有找到具体原因。不过在当时考虑了很多，特别是以为操作系统安装的所占容量太小导致的，于是想要扩大它的容量自然而然就接触到了LVM，不得不说LVM真的是个好东西啊！</p>
 <h2 id="LVM（Logical-Volume-Manager）简述"><a href="#LVM（Logical-Volume-Manager）简述" class="headerlink" title="LVM（Logical Volume Manager）简述"></a>LVM（Logical Volume Manager）简述</h2><p>LVM这个主要是用来给已经规划好大小的空间进行扩容或者缩小的，也就是可以弹性的调整逻辑卷的容量。可以类比windows上的扩大或者压缩某个盘的容量（虽然这么是不准确，但是这样进行类比可能会让比较抽象的概念变得清晰一点吧）</p>
-<h2 id="与LVM相联系的概念：物理卷（PV），物理块（PE），物理卷组（VG），逻辑卷（LV）"><a href="#与LVM相联系的概念：物理卷（PV），物理块（PE），物理卷组（VG），逻辑卷（LV）" class="headerlink" title="与LVM相联系的概念：物理卷（PV），物理块（PE），物理卷组（VG），逻辑卷（LV）"></a><strong>与LVM相联系的概念：物理卷（PV），物理块（PE），物理卷组（VG），逻辑卷（LV）</strong></h2><h3 id="物理卷（PV）"><a href="#物理卷（PV）" class="headerlink" title="物理卷（PV）"></a><strong>物理卷（PV）</strong></h3><p>实际的分区需要调整为系统标识符(System ID)成为8e，说白了，PV就是系统底层的分区，不过要将这个分区调整的系统标识符调整为8e才能创建成为一个PV</p>
+<h2 id="与LVM相联系的概念：PV，PE，VG，LV"><a href="#与LVM相联系的概念：PV，PE，VG，LV" class="headerlink" title="与LVM相联系的概念：PV，PE，VG，LV"></a><strong>与LVM相联系的概念：PV，PE，VG，LV</strong></h2><h3 id="物理卷（PV）"><a href="#物理卷（PV）" class="headerlink" title="物理卷（PV）"></a><strong>物理卷（PV）</strong></h3><p>实际的分区需要调整为系统标识符(System ID)成为8e，说白了，PV就是系统底层的分区，不过要将这个分区调整的系统标识符调整为8e才能创建成为一个PV</p>
 <h3 id="物理块（PE）"><a href="#物理块（PE）" class="headerlink" title="物理块（PE）"></a><strong>物理块（PE）</strong></h3><p>可以理解为数据存储的基本单元吧</p>
 <h3 id="物理卷组（VG）"><a href="#物理卷组（VG）" class="headerlink" title="物理卷组（VG）"></a><strong>物理卷组（VG）</strong></h3><p>建立在物理卷之上，由一个或者多个物理卷组成，在建立物理卷组之后，可以自由从该物理卷组中添加或者移除物理卷，LVM中可以有一个VG或者多个VG</p>
 <h3 id="逻辑卷组（LV）"><a href="#逻辑卷组（LV）" class="headerlink" title="逻辑卷组（LV）"></a><strong>逻辑卷组（LV）</strong></h3><p>终于到这最后一步了，最终由VG切成的LV才能够被格式化使用的类似分区的东西了，从能能公我们挂在使用，需要注意的是LVM的大小不是连续的，这要根据PE的大小情况而定</p>
 <h2 id="具体的操作流程"><a href="#具体的操作流程" class="headerlink" title="具体的操作流程"></a>具体的操作流程</h2><ol>
 <li><strong>分区阶段：</strong><br>首先将需要进行添加到LVM中的分区用fdisk工具将其系统标识符改为8e（fdisk工具的使用比较简单，在此不多加赘述）</li>
 <li><p><strong>PV阶段：</strong></p>
-<p>| 操作 | 含义 |<br>| ;—- | ;—- |<br>| pvcreate | 将分区建立成为PV |<br>| pvscan | 查看系统里面所有具有PV的磁盘 |<br>| pvdisplay | 显示出目前系统上PV的状态 |<br>| pvremove | 将PV属性移除 |</p>
+<p>| 操作 | 含义 |<br>| :—- | :—- |<br>| pvcreate | 将分区建立成为PV |<br>| pvscan | 查看系统里面所有具有PV的磁盘 |<br>| pvdisplay | 显示出目前系统上PV的状态 |<br>| pvremove | 将PV属性移除 |</p>
 </li>
 <li><p><strong>VG阶段</strong></p>
-<p>| 操作 | 含义 |<br>| ;—- | ;—- |<br>| vgcreate | 建立VG |<br>| vgscan | 查看系统里面所有 VG |<br>| vgdisplay | 显示目前系统上面的 VG 状态 |<br>| vgextend | 在 VG 内增加额外的 PV |<br>| vgreduce | 在 VG 内移除 PV |<br>| vgchange | 设定 VG 是否启动 (active) |<br>| vgremove | 删除一个 VG |<br>注意vgcreate的命令使用格式，可以用<code>vgcreate -h</code>进行查询，VG的命名由自己设定</p>
+<p>| 操作 | 含义 |<br>| :—- | :—- |<br>| vgcreate | 建立VG |<br>| vgscan | 查看系统里面所有 VG |<br>| vgdisplay | 显示目前系统上面的 VG 状态 |<br>| vgextend | 在 VG 内增加额外的 PV |<br>| vgreduce | 在 VG 内移除 PV |<br>| vgchange | 设定 VG 是否启动 (active) |<br>| vgremove | 删除一个 VG |<br>注意vgcreate的命令使用格式，可以用<code>vgcreate -h</code>进行查询，VG的命名由自己设定</p>
 </li>
 <li><strong>LV阶段</strong></li>
 </ol>
-<p>| 操作 | 含义 |<br>| ;—- | ;—- |<br>| lvcreate | 建立 LV |<br>| lvscan | 查看系统上面所有的 LV |<br>| lvdisplay | 查看系统上面的所有 LV 状态 |<br>| lvextend | 在 LV 里面增加容量 |<br>| lvreduce | 在 LV 里面减少容量 |<br>| lvremove | 删除一个 LV |<br>| lvresize | 对 LV 进行容量大小的调整 |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">lvcreate</td>
+<td style="text-align:left">建立 LV</td>
+</tr>
+<tr>
+<td style="text-align:left">lvscan</td>
+<td style="text-align:left">查看系统上面所有的 LV</td>
+</tr>
+<tr>
+<td style="text-align:left">lvdisplay</td>
+<td style="text-align:left">查看系统上面的所有 LV 状态</td>
+</tr>
+<tr>
+<td style="text-align:left">lvextend</td>
+<td style="text-align:left">在 LV 里面增加容量</td>
+</tr>
+<tr>
+<td style="text-align:left">lvreduce</td>
+<td style="text-align:left">在 LV 里面减少容量</td>
+</tr>
+<tr>
+<td style="text-align:left">lvremove</td>
+<td style="text-align:left">删除一个 LV</td>
+</tr>
+<tr>
+<td style="text-align:left">lvresize</td>
+<td style="text-align:left">对 LV 进行容量大小的调整</td>
+</tr>
+</tbody>
+</table>
 <p>to be continue……</p>
 
                 
