@@ -336,7 +336,7 @@
 <li>SUID权限仅仅对二进制程序有效</li>
 <li>执行者对于该程序需要具有x的可执行权限</li>
 <li>本权限仅在执行该程序的过程中（run-time）有效</li>
-<li>执行者将具有该程序所有者（owner）权限      解释一下就是：一个二进制可执行文件（或者说命令吧，例如passwd），它虽然没有设置除了root之外的人可以执行，但是其他账户却能够通过执行它来修改自己的密码，这不是很矛盾么。其实就是因为这个命令具有SUID权限，所以才能达到这样的效果。在用户执行passwd文件的时候用户暂时获得了root的权限，从而可以执行它修改密码。<br>  <strong>需要注意的是：SUID权限只能用于二进制程序上面，而不能用于shellscript上</strong><h2 id="SGID"><a href="#SGID" class="headerlink" title="SGID"></a><strong>SGID</strong></h2></li>
+<li>执行者将具有该程序所有者（owner）权限      解释一下就是：一个二进制可执行文件（或者说命令吧，例如passwd），它虽然没有设置除了root之外的人可以执行，但是其他账户却能够通过执行它来修改自己的密码，这不是很矛盾么。其实就是因为这个命令具有SUID权限，所以才能达到这样的效果。在用户执行passwd文件的时候用户暂时获得了root的权限，从而可以执行它修改密码。<br><strong>需要注意的是：SUID权限只能用于二进制程序上面，而不能用于shellscript上</strong><h2 id="SGID"><a href="#SGID" class="headerlink" title="SGID"></a><strong>SGID</strong></h2></li>
 <li>SGID对二进制文件有用</li>
 <li>程序执行者对于该文件来说，需具备x的权限</li>
 <li>执行者在执行的过程中将会获得该程序用户组的支持<br>这就不详细举例子说明了，和上面的SUID差不多的意思，不同点在于这里是用户组的支持，SUID是所有者权限<br><strong>SGID与SUID是不同的，它既能用于文件，也能用于目录</strong></li>
