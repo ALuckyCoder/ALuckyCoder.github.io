@@ -12,7 +12,7 @@
     
     <meta name="description" content="在linux中某个文件（目录）的权限有三种：可读（r），可写（w），可执行（x）
 注意：权限对目录和文件的理解上是不同的，详情请看目录与文件权限的意义在linux输入如下命令1ls -al
-可以看到如下结果：drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 2">
+可以看到如下结果：    drwxr-xr-x 1 LuckyCoder 197121      0 9月  ">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -263,8 +263,7 @@
             <div class="entry pink-link-context">
                 <p>在linux中某个文件（目录）的权限有三种：可读（r），可写（w），可执行（x）</p>
 <p><strong>注意：权限对目录和文件的理解上是不同的，详情请看<a href="https://aluckycoder.github.io/2017/09/28/%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9A%84%E6%84%8F%E4%B9%89/" target="_blank" rel="external">目录与文件权限的意义</a></strong><br>在linux输入如下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -al</div></pre></td></tr></table></figure></p>
-<p>可以看到如下结果：<br><code>drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:33 ./</code><br><code>drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 12:16 ../</code><br><code>drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:53 .deploy_git/</code><br><code>-rw-r--r-- 1 LuckyCoder 197121     71 9月  25 20:06 .gitignore</code><br><code>-rw-r--r-- 1 LuckyCoder 197121    117 9月  25 20:06 .gitmodules</code></p>
-<p>解释如下:<br><strong>第一列代表的是文件的类型与权限</strong>(本篇主要对此进行叙述)<br>第二列代表的是连接数，表示有多少文件名连接到这个节点（i-node）<br>第三列表示这个文件（或目录）的“所有者账号”<br>第四列表示这个文件的所属用户组<br>第五列为这个文件的容量大小，默认单位是B<br>第六列为这个文件的创建日期或者最近的修改日期<br>第七列为该文件名</p>
+<p>可以看到如下结果：<br>    drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:33 ./<br>    drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 12:16 ../<br>    drwxr-xr-x 1 LuckyCoder 197121      0 9月  28 20:53 .deploy_git/<br>    -rw-r–r– 1 LuckyCoder 197121     71 9月  25 20:06 .gitignore<br>    -rw-r–r– 1 LuckyCoder 197121    117 9月  25 20:06 .gitmodules<br>解释如下:<br><strong>第一列代表的是文件的类型与权限</strong>(本篇主要对此进行叙述)<br>第二列代表的是连接数，表示有多少文件名连接到这个节点（i-node）<br>第三列表示这个文件（或目录）的“所有者账号”<br>第四列表示这个文件的所属用户组<br>第五列为这个文件的容量大小，默认单位是B<br>第六列为这个文件的创建日期或者最近的修改日期<br>第七列为该文件名</p>
 <p>第一个字符表示这个文件是“目录，文件或链接文件等”</p>
 <table>
 <thead>
@@ -328,10 +327,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="文件的默认权限与隐藏权限"><a href="#文件的默认权限与隐藏权限" class="headerlink" title="文件的默认权限与隐藏权限"></a><strong>文件的默认权限与隐藏权限</strong></h2><h3 id="文件的默认权限：umask"><a href="#文件的默认权限：umask" class="headerlink" title="文件的默认权限：umask"></a>文件的默认权限：umask</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[luckycoder@localhost ~]$ umask</div><div class="line">0002`</div><div class="line">[luckycoder@localhost ~]$ umask -S</div><div class="line">u=rwx,g=rwx,o=rx</div></pre></td></tr></table></figure>
-<p>这个一目了然，不多加叙述了，主要记住，设置哪个位置的数字，对应着剥夺某个权限就可以了，主要应该注意的就是那个最前面的0，涉及到<a href="#文件的特殊权限：SUID，SGID，SBIT">特殊权限</a></p>
-<h3 id="文件的隐藏属性：chattr，lsattr"><a href="#文件的隐藏属性：chattr，lsattr" class="headerlink" title="文件的隐藏属性：chattr，lsattr"></a><strong>文件的隐藏属性：chattr，lsattr</strong></h3><p>需要注意的是chattr命令只能在Ext2/Ext3/Ext4的文件系统上才能生效<br>操作如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">[luckycoder@localhost test]$ cd /home/luckycoder</div><div class="line">[luckycoder@localhost test]$ mkdir test</div><div class="line">[luckycoder@localhost test]$ cd test</div><div class="line">[luckycoder@localhost test]$ touch aaa</div><div class="line">[luckycoder@localhost test]$ su root</div><div class="line">[luckycoder@localhost test]$ su root</div><div class="line">密码：</div><div class="line">[root@localhost test]# ls -al</div><div class="line">总用量 8</div><div class="line">drwxrwxr-x.  2 luckycoder luckycoder 4096 9月  29 06:48 .</div><div class="line">drwx------. 16 luckycoder luckycoder 4096 9月  29 06:54 ..</div><div class="line">-rw-rw-r--.  1 luckycoder luckycoder    0 9月  29 06:48 aaa</div><div class="line">[root@localhost test]# chattr +i aaa</div><div class="line">[root@localhost test]# exit</div><div class="line">exit</div><div class="line">[luckycoder@localhost test]$ rm aaa</div><div class="line">rm：是否删除有写保护的普通空文件 &quot;aaa&quot;？y</div><div class="line">rm: 无法删除&quot;aaa&quot;: 不允许的操作</div><div class="line">[luckycoder@localhost test]$ lsattr aaa</div><div class="line">----i--------e-- aaa</div></pre></td></tr></table></figure></p>
-<p>具体的参数可以chattr –help来查阅</p>
+<h2 id="文件的默认权限与隐藏权限"><a href="#文件的默认权限与隐藏权限" class="headerlink" title="文件的默认权限与隐藏权限"></a><strong>文件的默认权限与隐藏权限</strong></h2><h3 id="文件的默认权限：umask"><a href="#文件的默认权限：umask" class="headerlink" title="文件的默认权限：umask"></a>文件的默认权限：umask</h3><pre><code>[luckycoder@localhost ~]$ umask
+0002
+[luckycoder@localhost ~]$ umask -S
+u=rwx,g=rwx,o=rx
+</code></pre><p>这个一目了然，不多加叙述了，主要记住，设置哪个位置的数字，对应着剥夺某个权限就可以了，主要应该注意的就是那个最前面的0，涉及到<a href="#文件的特殊权限：SUID，SGID，SBIT">特殊权限</a></p>
+<h3 id="文件的隐藏属性：chattr，lsattr"><a href="#文件的隐藏属性：chattr，lsattr" class="headerlink" title="文件的隐藏属性：chattr，lsattr"></a><strong>文件的隐藏属性：chattr，lsattr</strong></h3><p>需要注意的是chattr命令只能在Ext2/Ext3/Ext4的文件系统上才能生效<br>操作如下:<br>    [luckycoder@localhost test]$ cd /home/luckycoder<br>    [luckycoder@localhost test]$ mkdir test<br>    [luckycoder@localhost test]$ cd test<br>    [luckycoder@localhost test]$ touch aaa<br>    [luckycoder@localhost test]$ su root<br>    密码：<br>    [root@localhost test]# ls -al<br>    总用量 8<br>    drwxrwxr-x.  2 luckycoder luckycoder 4096 9月  29 06:48 .<br>    drwx——. 16 luckycoder luckycoder 4096 9月  29 06:54 ..<br>    -rw-rw-r–.  1 luckycoder luckycoder    0 9月  29 06:48 aaa<br>    [root@localhost test]# chattr +i aaa<br>    [root@localhost test]# exit<br>    exit<br>    [luckycoder@localhost test]$ rm aaa<br>    rm：是否删除有写保护的普通空文件 “aaa”？y<br>    rm: 无法删除”aaa”: 不允许的操作<br>    [luckycoder@localhost test]$ lsattr aaa<br>    —-i——–e– aaa<br>具体的参数可以chattr –help来查阅</p>
 <h2 id="文件的特殊权限：SUID，SGID，SBIT"><a href="#文件的特殊权限：SUID，SGID，SBIT" class="headerlink" title="文件的特殊权限：SUID，SGID，SBIT"></a><strong>文件的特殊权限：SUID，SGID，SBIT</strong></h2><h3 id="SUID"><a href="#SUID" class="headerlink" title="SUID"></a><strong>SUID</strong></h3><ul>
 <li>SUID权限仅仅对二进制程序有效</li>
 <li>执行者对于该程序需要具有x的可执行权限</li>
