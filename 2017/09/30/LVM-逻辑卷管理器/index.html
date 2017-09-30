@@ -263,14 +263,14 @@ LVM（Logical Volume Manager）简述LVM">
 <h2 id="具体的操作流程"><a href="#具体的操作流程" class="headerlink" title="具体的操作流程"></a>具体的操作流程</h2><ol>
 <li><strong>分区阶段：</strong><br>首先将需要进行添加到LVM中的分区用fdisk工具将其系统标识符改为8e（fdisk工具的使用比较简单，在此不多加赘述）</li>
 <li><p><strong>PV阶段：</strong></p>
-<p>| 操作 | 含义 |<br>| pvcreate | 将分区建立成为PV |<br>| pvscan | 查看系统里面所有具有PV的磁盘 |<br>| pvdisplay | 显示出目前系统上PV的状态 |<br>| pvremove | 将PV属性移除 |</p>
+<p>| 操作 | 含义 |<br>| ;—- | ;—- |<br>| pvcreate | 将分区建立成为PV |<br>| pvscan | 查看系统里面所有具有PV的磁盘 |<br>| pvdisplay | 显示出目前系统上PV的状态 |<br>| pvremove | 将PV属性移除 |</p>
 </li>
 <li><p><strong>VG阶段</strong></p>
-<p>| 操作 | 含义 |<br>| vgcreate | 建立VG |<br>| vgscan | 查看系统里面所有 VG |<br>| vgdisplay | 显示目前系统上面的 VG 状态 |<br>| vgextend | 在 VG 内增加额外的 PV |<br>| vgreduce | 在 VG 内移除 PV |<br>| vgchange | 设定 VG 是否启动 (active) |<br>| vgremove | 删除一个 VG |<br>注意vgcreate的命令使用格式，可以用<code>vgcreate -h</code>进行查询，VG的命名由自己设定</p>
+<p>| 操作 | 含义 |<br>| ;—- | ;—- |<br>| vgcreate | 建立VG |<br>| vgscan | 查看系统里面所有 VG |<br>| vgdisplay | 显示目前系统上面的 VG 状态 |<br>| vgextend | 在 VG 内增加额外的 PV |<br>| vgreduce | 在 VG 内移除 PV |<br>| vgchange | 设定 VG 是否启动 (active) |<br>| vgremove | 删除一个 VG |<br>注意vgcreate的命令使用格式，可以用<code>vgcreate -h</code>进行查询，VG的命名由自己设定</p>
 </li>
 <li><strong>LV阶段</strong></li>
 </ol>
-<p>| lvcreate | 建立 LV |<br>| lvscan | 查看系统上面所有的 LV |<br>| lvdisplay | 查看系统上面的所有 LV 状态 |<br>| lvextend | 在 LV 里面增加容量 |<br>| lvreduce | 在 LV 里面减少容量 |<br>| lvremove | 删除一个 LV |<br>| lvresize | 对 LV 进行容量大小的调整 |</p>
+<p>| 操作 | 含义 |<br>| ;—- | ;—- |<br>| lvcreate | 建立 LV |<br>| lvscan | 查看系统上面所有的 LV |<br>| lvdisplay | 查看系统上面的所有 LV 状态 |<br>| lvextend | 在 LV 里面增加容量 |<br>| lvreduce | 在 LV 里面减少容量 |<br>| lvremove | 删除一个 LV |<br>| lvresize | 对 LV 进行容量大小的调整 |</p>
 <p>to be continue……</p>
 
                 
