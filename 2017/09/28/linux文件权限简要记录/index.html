@@ -331,7 +331,27 @@
 [luckycoder@localhost ~]$ umask -S
 u=rwx,g=rwx,o=rx
 </code></pre><p>这个一目了然，不多加叙述了，主要记住，设置哪个位置的数字，对应着剥夺某个权限就可以了，主要应该注意的就是那个最前面的0，涉及到<a href="#文件的特殊权限：SUID，SGID，SBIT">特殊权限</a></p>
-<h3 id="文件的隐藏属性：chattr，lsattr"><a href="#文件的隐藏属性：chattr，lsattr" class="headerlink" title="文件的隐藏属性：chattr，lsattr"></a><strong>文件的隐藏属性：chattr，lsattr</strong></h3><p>需要注意的是chattr命令只能在Ext2/Ext3/Ext4的文件系统上才能生效<br>操作如下:<br>    [luckycoder@localhost test]$ cd /home/luckycoder<br>    [luckycoder@localhost test]$ mkdir test<br>    [luckycoder@localhost test]$ cd test<br>    [luckycoder@localhost test]$ touch aaa<br>    [luckycoder@localhost test]$ su root<br>    密码：<br>    [root@localhost test]# ls -al<br>    总用量 8<br>    drwxrwxr-x.  2 luckycoder luckycoder 4096 9月  29 06:48 .<br>    drwx——. 16 luckycoder luckycoder 4096 9月  29 06:54 ..<br>    -rw-rw-r–.  1 luckycoder luckycoder    0 9月  29 06:48 aaa<br>    [root@localhost test]# chattr +i aaa<br>    [root@localhost test]# exit<br>    exit<br>    [luckycoder@localhost test]$ rm aaa<br>    rm：是否删除有写保护的普通空文件 “aaa”？y<br>    rm: 无法删除”aaa”: 不允许的操作<br>    [luckycoder@localhost test]$ lsattr aaa<br>    —-i——–e– aaa<br>具体的参数可以chattr –help来查阅</p>
+<h3 id="文件的隐藏属性：chattr，lsattr"><a href="#文件的隐藏属性：chattr，lsattr" class="headerlink" title="文件的隐藏属性：chattr，lsattr"></a><strong>文件的隐藏属性：chattr，lsattr</strong></h3><p>需要注意的是chattr命令只能在Ext2/Ext3/Ext4的文件系统上才能生效<br>操作如下:</p>
+<pre><code>[luckycoder@localhost test]$ cd /home/luckycoder
+[luckycoder@localhost test]$ mkdir test
+[luckycoder@localhost test]$ cd test
+[luckycoder@localhost test]$ touch aaa
+[luckycoder@localhost test]$ su root
+密码：
+[root@localhost test]# ls -al
+总用量 8
+drwxrwxr-x.  2 luckycoder luckycoder 4096 9月  29 06:48 .
+drwx------. 16 luckycoder luckycoder 4096 9月  29 06:54 ..
+-rw-rw-r--.  1 luckycoder luckycoder    0 9月  29 06:48 aaa
+[root@localhost test]# chattr +i aaa
+[root@localhost test]# exit
+exit
+[luckycoder@localhost test]$ rm aaa
+rm：是否删除有写保护的普通空文件 &quot;aaa&quot;？y
+rm: 无法删除&quot;aaa&quot;: 不允许的操作
+[luckycoder@localhost test]$ lsattr aaa
+----i--------e-- aaa
+</code></pre><p>具体的参数可以chattr –help来查阅</p>
 <h2 id="文件的特殊权限：SUID，SGID，SBIT"><a href="#文件的特殊权限：SUID，SGID，SBIT" class="headerlink" title="文件的特殊权限：SUID，SGID，SBIT"></a><strong>文件的特殊权限：SUID，SGID，SBIT</strong></h2><h3 id="SUID"><a href="#SUID" class="headerlink" title="SUID"></a><strong>SUID</strong></h3><ul>
 <li>SUID权限仅仅对二进制程序有效</li>
 <li>执行者对于该程序需要具有x的可执行权限</li>
