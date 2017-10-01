@@ -249,7 +249,7 @@ LVM（Logical Volume Manager）简述LVM">
             
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#胡扯中orz"><span class="section table-of-contents-text">胡扯中orz:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#LVM（Logical-Volume-Manager）简述"><span class="section table-of-contents-text">LVM（Logical Volume Manager）简述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#与LVM相联系的概念：PV，PE，VG，LV"><span class="section table-of-contents-text">与LVM相联系的概念：PV，PE，VG，LV</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷（PV）"><span class="section table-of-contents-text">物理卷（PV）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理块（PE）"><span class="section table-of-contents-text">物理块（PE）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷组（VG）"><span class="section table-of-contents-text">物理卷组（VG）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#逻辑卷组（LV）"><span class="section table-of-contents-text">逻辑卷组（LV）</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#具体的操作流程"><span class="section table-of-contents-text">具体的操作流程</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#实际操作"><span class="section table-of-contents-text">实际操作</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#扩大LV的容量第一种方式"><span class="section table-of-contents-text">扩大LV的容量第一种方式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#扩大LV的容量的第二种方式"><span class="section table-of-contents-text">扩大LV的容量的第二种方式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#缩小LV的容量"><span class="section table-of-contents-text">缩小LV的容量</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#将某个PV独立出来"><span class="section table-of-contents-text">将某个PV独立出来</span></a></li></ol></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#胡扯中orz"><span class="section table-of-contents-text">胡扯中orz:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#LVM（Logical-Volume-Manager）简述"><span class="section table-of-contents-text">LVM（Logical Volume Manager）简述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#与LVM相联系的概念：PV，PE，VG，LV"><span class="section table-of-contents-text">与LVM相联系的概念：PV，PE，VG，LV</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷（PV）"><span class="section table-of-contents-text">物理卷（PV）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理块（PE）"><span class="section table-of-contents-text">物理块（PE）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷组（VG）"><span class="section table-of-contents-text">物理卷组（VG）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#逻辑卷组（LV）"><span class="section table-of-contents-text">逻辑卷组（LV）</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#具体的操作流程"><span class="section table-of-contents-text">具体的操作流程</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#实际操作"><span class="section table-of-contents-text">实际操作</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#扩大LV的容量第一种方式"><span class="section table-of-contents-text">扩大LV的容量第一种方式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#缩小LV的容量"><span class="section table-of-contents-text">缩小LV的容量</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#将某个PV独立出来"><span class="section table-of-contents-text">将某个PV独立出来</span></a></li></ol></li></ol>
 </div>
 
 
@@ -455,8 +455,7 @@ Volume group &quot;LuckyCoder&quot; successfully extended
 <pre><code>[root@localhost ~]# lvextend -L +300M /dev/LuckyCoder/coder
 Size of logical volume LuckyCoder/coder changed from 1020.00 MiB (255     extents) to 1.29 GiB (330 extents).
 Logical volume LuckyCoder/coder successfully resized.
-</code></pre><h3 id="扩大LV的容量的第二种方式"><a href="#扩大LV的容量的第二种方式" class="headerlink" title="扩大LV的容量的第二种方式"></a><strong>扩大LV的容量的第二种方式</strong></h3><p>可以不用先给对应的VG扩容，可以直接将PV添加到LV当中<br>    [root@localhost ~]# lvextend -L +200M /dev/LuckyCoder/coder /dev/sda6<br>    Size of logical volume LuckyCoder/coder changed from 1020.00 MiB (255     extents) to 1.19 GiB (305 extents).<br>    Logical volume LuckyCoder/coder successfully resized.</p>
-<h3 id="缩小LV的容量"><a href="#缩小LV的容量" class="headerlink" title="缩小LV的容量"></a><strong>缩小LV的容量</strong></h3><pre><code>[root@localhost ~]# lvresize -L -300M /dev/LuckyCoder/coder 
+</code></pre><h3 id="缩小LV的容量"><a href="#缩小LV的容量" class="headerlink" title="缩小LV的容量"></a><strong>缩小LV的容量</strong></h3><pre><code>[root@localhost ~]# lvresize -L -300M /dev/LuckyCoder/coder 
 WARNING: Reducing active logical volume to 1020.00 MiB.
 THIS MAY DESTROY YOUR DATA (filesystem etc.)
 Do you really want to reduce LuckyCoder/coder? [y/n]: y
@@ -518,7 +517,22 @@ Total PE              3840
 Free PE               0
 Allocated PE          3840
 PV UUID               nTB7Ba-Ucfp-9U48-chO6-fEFy-15lY-mjvcsR
-</code></pre><p>To be continue……………………..</p>
+[root@localhost ~]# vgreduce /dev/LuckyCoder /dev/sda5
+Removed &quot;/dev/sda5&quot; from volume group &quot;LuckyCoder&quot;
+[root@localhost ~]# pvremove /dev/sda5
+Labels on physical volume &quot;/dev/sda5&quot; successfully wiped.
+[root@localhost ~]# pvdisplay
+--- Physical volume ---
+PV Name               /dev/sda6
+VG Name               LuckyCoder
+PV Size               800.00 MiB / not usable 4.00 MiB
+Allocatable           yes 
+PE Size               4.00 MiB
+Total PE              199
+Free PE               157
+Allocated PE          42
+PV UUID               WtTnom-YJvj-IuhD-WL10-HtjE-0Eta-6cKyyX
+</code></pre><p>如上所示/dev/sda5已经不是PV了，也就是独立出来了 </p>
 
                 
 
