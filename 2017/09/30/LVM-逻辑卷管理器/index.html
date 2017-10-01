@@ -7,7 +7,7 @@
 
     
 
-    <title>LVM(逻辑卷管理器) | programIng change the world!</title>
+    <title>LVM(逻辑卷管理器) | LuckyCoder&#39;s Blog</title>
     <meta name="author" content="John Doe">
     
     <meta name="description" content="胡扯中orz:之前弄完centos7的时候发现系统开机十分慢，当然我至今没有找到具体原因。不过在当时考虑了很多，特别是以为操作系统安装的所占容量太小导致的，于是想要扩大它的容量自然而然就接触到了LVM，不得不说LVM真的是个好东西啊！
@@ -255,8 +255,8 @@ LVM（Logical Volume Manager）简述LVM">
 
             <div class="entry pink-link-context">
                 <h2 id="胡扯中orz"><a href="#胡扯中orz" class="headerlink" title="胡扯中orz:"></a>胡扯中orz:</h2><p>之前弄完centos7的时候发现系统开机十分慢，当然我至今没有找到具体原因。不过在当时考虑了很多，特别是以为操作系统安装的所占容量太小导致的，于是想要扩大它的容量自然而然就接触到了LVM，不得不说LVM真的是个好东西啊！</p>
-<h2 id="LVM（Logical-Volume-Manager）简述"><a href="#LVM（Logical-Volume-Manager）简述" class="headerlink" title="LVM（Logical Volume Manager）简述"></a>LVM（Logical Volume Manager）简述</h2><p>LVM这个主要是用来给已经规划好大小的空间进行扩容或者缩小的，也就是可以弹性的调整逻辑卷的容量。可以类比windows上的扩大或者压缩某个盘的容量（虽然这么是不准确，但是这样进行类比可能会让比较抽象的概念变得清晰一点吧）</p>
-<h2 id="与LVM相联系的概念：PV，PE，VG，LV"><a href="#与LVM相联系的概念：PV，PE，VG，LV" class="headerlink" title="与LVM相联系的概念：PV，PE，VG，LV"></a><strong>与LVM相联系的概念：PV，PE，VG，LV</strong></h2><h3 id="物理卷（PV）"><a href="#物理卷（PV）" class="headerlink" title="物理卷（PV）"></a><strong>物理卷（PV）</strong></h3><p>实际的分区需要调整为系统标识符(System ID)成为8e，说白了，PV就是系统底层的分区，不过要将这个分区调整的系统标识符调整为8e才能创建成为一个PV</p>
+<h2 id="LVM（Logical-Volume-Manager）简述"><a href="#LVM（Logical-Volume-Manager）简述" class="headerlink" title="LVM（Logical Volume Manager）简述"></a>LVM（Logical Volume Manager）简述</h2><p>LVM这个主要是用来给已经规划好大小的空间改变容量的，也就是可以弹性的调整逻辑卷的容量。可以类比windows上的扩大或者压缩某个盘的容量（虽然这么是不准确，但是这样进行类比可能会让比较抽象的概念变得清晰一点吧）</p>
+<h2 id="与LVM相联系的概念：PV，PE，VG，LV"><a href="#与LVM相联系的概念：PV，PE，VG，LV" class="headerlink" title="与LVM相联系的概念：PV，PE，VG，LV"></a><strong>与LVM相联系的概念：PV，PE，VG，LV</strong></h2><h3 id="物理卷（PV）"><a href="#物理卷（PV）" class="headerlink" title="物理卷（PV）"></a><strong>物理卷（PV）</strong></h3><p>实际的分区，需要调整系统标识符(System ID)为8e，说白了，PV就是系统底层的分区，不过要将这个分区的系统标识符调整为8e才能创建成为一个PV</p>
 <h3 id="物理块（PE）"><a href="#物理块（PE）" class="headerlink" title="物理块（PE）"></a><strong>物理块（PE）</strong></h3><p>可以理解为数据存储的基本单元吧</p>
 <h3 id="物理卷组（VG）"><a href="#物理卷组（VG）" class="headerlink" title="物理卷组（VG）"></a><strong>物理卷组（VG）</strong></h3><p>建立在物理卷之上，由一个或者多个物理卷组成，在建立物理卷组之后，可以自由从该物理卷组中添加或者移除物理卷，LVM中可以有一个VG或者多个VG</p>
 <h3 id="逻辑卷组（LV）"><a href="#逻辑卷组（LV）" class="headerlink" title="逻辑卷组（LV）"></a><strong>逻辑卷组（LV）</strong></h3><p>终于到这最后一步了，最终由VG切成的LV才能够被格式化使用的类似分区的东西了，从而能供我们挂载使用，需要注意的是LVM的大小不是连续的，这要根据PE的大小情况而定</p>
