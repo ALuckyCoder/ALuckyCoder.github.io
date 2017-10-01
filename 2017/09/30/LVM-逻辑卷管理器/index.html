@@ -415,24 +415,41 @@ I/O 大小(最小/最佳)：512 字节 / 512 字节
 <p>  [root@localhost ~]# pvcreate /dev/sda5 /dev/sda6<br>  Device /dev/sda6 not found (or ignored by filtering).<br>  Physical volume “/dev/sda5” successfully created.</p>
 </li>
 </ul>
-<ul>
-<li><p><strong>创建VG</strong></p>
-<p>  [root@localhost ~]# vgcreate LuckyCoder /dev/sda5<br>  Volume group “LuckyCoder” successfully created</p>
-</li>
-</ul>
-<ul>
-<li><p><strong>创建LV</strong></p>
-<p>  [root@localhost ~]# lvcreate -l 460 -n coder1 LuckyCoder<br>  Logical volume “coder1” created.</p>
-</li>
-</ul>
-<ul>
-<li><p><strong>格式化LV并且挂载</strong></p>
-<p>  [root@localhost ~]# mkfs -t ext4 /dev/LuckyCoder/coder1<br>  mke2fs 1.42.9 (28-Dec-2013)<br>  文件系统标签=<br>  OS type: Linux<br>  块大小=4096 (log=2)<br>  分块大小=4096 (log=2)<br>  Stride=0 blocks, Stripe width=0 blocks<br>  117840 inodes, 471040 blocks<br>  23552 blocks (5.00%) reserved for the super user<br>  第一个数据块=0<br>  Maximum filesystem blocks=482344960<br>  15 block groups<br>  32768 blocks per group, 32768 fragments per group<br>  7856 inodes per group<br>  Superblock backups stored on blocks:<br>  32768, 98304, 163840, 229376, 294912</p>
-<p>  Allocating group tables: 完成<br>  正在写入inode表: 完成<br>  Creating journal (8192 blocks): 完成<br>  Writing superblocks and filesystem accounting information: 完成 </p>
-<p>  [root@localhost ~]# mkdir /mnt/test<br>  [root@localhost ~]# mount /dev/LuckyCoder/coder1 /mnt/test<br>  [root@localhost ~]# df /mnt/test<br>  文件系统                        1K-块  已用    可用 已用% 挂载点<br>  /dev/mapper/LuckyCoder-coder1 1821764  5520 1705652    1% /mnt/test</p>
-</li>
-</ul>
-<h3 id="扩大LV的容量"><a href="#扩大LV的容量" class="headerlink" title="扩大LV的容量"></a><strong>扩大LV的容量</strong></h3><ul>
+<p><strong>创建VG</strong></p>
+<pre><code>[root@localhost ~]# vgcreate LuckyCoder /dev/sda5
+Volume group &quot;LuckyCoder&quot; successfully created
+</code></pre><p><strong>创建LV</strong></p>
+<pre><code>[root@localhost ~]# lvcreate -l 460 -n coder1 LuckyCoder
+Logical volume &quot;coder1&quot; created.
+</code></pre><p><strong>格式化LV并且挂载</strong></p>
+<pre><code>[root@localhost ~]# mkfs -t ext4 /dev/LuckyCoder/coder1    
+mke2fs 1.42.9 (28-Dec-2013)
+文件系统标签=
+OS type: Linux
+块大小=4096 (log=2)
+分块大小=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+117840 inodes, 471040 blocks
+23552 blocks (5.00%) reserved for the super user
+第一个数据块=0
+Maximum filesystem blocks=482344960
+15 block groups
+32768 blocks per group, 32768 fragments per group
+7856 inodes per group
+Superblock backups stored on blocks: 
+32768, 98304, 163840, 229376, 294912
+
+Allocating group tables: 完成                            
+正在写入inode表: 完成                            
+Creating journal (8192 blocks): 完成
+Writing superblocks and filesystem accounting information: 完成 
+
+[root@localhost ~]# mkdir /mnt/test
+[root@localhost ~]# mount /dev/LuckyCoder/coder1 /mnt/test
+[root@localhost ~]# df /mnt/test
+文件系统                        1K-块  已用    可用 已用% 挂载点
+/dev/mapper/LuckyCoder-coder1 1821764  5520 1705652    1% /mnt/test
+</code></pre><h3 id="扩大LV的容量"><a href="#扩大LV的容量" class="headerlink" title="扩大LV的容量"></a><strong>扩大LV的容量</strong></h3><ul>
 <li>首先将VG扩容</li>
 </ul>
 <p>To be continue……………………..</p>
