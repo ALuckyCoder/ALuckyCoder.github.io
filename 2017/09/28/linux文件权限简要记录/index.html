@@ -413,7 +413,7 @@ drwxrws---. 2 root project 4096 9月  30 04:50 .
 drwxr-xr-x. 3 root root    4096 9月  30 04:40 ..
 -rw-r--r--. 1 arod arod       0 9月  30 04:45 aaa
 -rw-rw-r--. 1 alex project    0 9月  30 04:50 bbb
-</code></pre><p>可以发现alex用户创建的文件bbb是属于project用户组的，这样同属于用户组project的用户arod也能够自由编辑该文件了</p>
+</code></pre><p>可以发现alex用户创建的文件bbb是属于project用户组的（可以看到对于同一用户组的成员对该文件具有rw权限），这样同属于用户组project的用户arod也能够自由编辑该文件了。</p>
 <h2 id="SBIT"><a href="#SBIT" class="headerlink" title="SBIT"></a><strong>SBIT</strong></h2><p><strong>当用户对于此目录具有w，x权限，即具有写入权限时候，当用户在该目录下创建文件或者目录的时候，仅有自己与root才有权利删除该文件</strong></p>
 <h2 id="SUID-SGID-SBIT权限设置"><a href="#SUID-SGID-SBIT权限设置" class="headerlink" title="SUID/SGID/SBIT权限设置"></a><strong>SUID/SGID/SBIT权限设置</strong></h2><p><strong>4为SUID</strong><br><strong>2为SGID</strong><br><strong>1为SBIT</strong></p>
 <h2 id="最后一点需要注意的是"><a href="#最后一点需要注意的是" class="headerlink" title="最后一点需要注意的是"></a>最后一点需要注意的是</h2><p><strong>当文件权限出现大写的S与T的时候，这个S，T代表是空的，也就是以上特殊权限中的前提权限不成立的时候，偏偏该文件又被赋予了特殊权限。从而产生了大写的S与T的情况</strong></p>
