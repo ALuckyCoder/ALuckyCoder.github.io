@@ -249,7 +249,7 @@ LVM（Logical Volume Manager）简述LVM">
             
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#胡扯中orz"><span class="section table-of-contents-text">胡扯中orz:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#LVM（Logical-Volume-Manager）简述"><span class="section table-of-contents-text">LVM（Logical Volume Manager）简述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#与LVM相联系的概念：PV，PE，VG，LV"><span class="section table-of-contents-text">与LVM相联系的概念：PV，PE，VG，LV</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷（PV）"><span class="section table-of-contents-text">物理卷（PV）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理块（PE）"><span class="section table-of-contents-text">物理块（PE）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷组（VG）"><span class="section table-of-contents-text">物理卷组（VG）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#逻辑卷组（LV）"><span class="section table-of-contents-text">逻辑卷组（LV）</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#具体的操作流程"><span class="section table-of-contents-text">具体的操作流程</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#实际操作"><span class="section table-of-contents-text">实际操作</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#扩大LV的容量第一种方式"><span class="section table-of-contents-text">扩大LV的容量第一种方式</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#首先将VG扩容"><span class="section table-of-contents-text">首先将VG扩容</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#然后给LV扩容"><span class="section table-of-contents-text">然后给LV扩容</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#缩小LV的容量"><span class="section table-of-contents-text">缩小LV的容量</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#将某个PV独立出来"><span class="section table-of-contents-text">将某个PV独立出来</span></a></li></ol></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#胡扯中orz"><span class="section table-of-contents-text">胡扯中orz:</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#LVM（Logical-Volume-Manager）简述"><span class="section table-of-contents-text">LVM（Logical Volume Manager）简述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#与LVM相联系的概念：PV，PE，VG，LV"><span class="section table-of-contents-text">与LVM相联系的概念：PV，PE，VG，LV</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷（PV）"><span class="section table-of-contents-text">物理卷（PV）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理块（PE）"><span class="section table-of-contents-text">物理块（PE）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#物理卷组（VG）"><span class="section table-of-contents-text">物理卷组（VG）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#逻辑卷组（LV）"><span class="section table-of-contents-text">逻辑卷组（LV）</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#具体的操作流程"><span class="section table-of-contents-text">具体的操作流程</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#实际操作"><span class="section table-of-contents-text">实际操作</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#扩大LV的容量"><span class="section table-of-contents-text">扩大LV的容量</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#首先将VG扩容"><span class="section table-of-contents-text">首先将VG扩容</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#然后给LV扩容"><span class="section table-of-contents-text">然后给LV扩容</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#缩小LV的容量"><span class="section table-of-contents-text">缩小LV的容量</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#将某个PV独立出来"><span class="section table-of-contents-text">将某个PV独立出来</span></a></li></ol></li></ol>
 </div>
 
 
@@ -260,10 +260,7 @@ LVM（Logical Volume Manager）简述LVM">
 <h3 id="物理块（PE）"><a href="#物理块（PE）" class="headerlink" title="物理块（PE）"></a><strong>物理块（PE）</strong></h3><p>可以理解为数据存储的基本单元吧</p>
 <h3 id="物理卷组（VG）"><a href="#物理卷组（VG）" class="headerlink" title="物理卷组（VG）"></a><strong>物理卷组（VG）</strong></h3><p>建立在物理卷之上，由一个或者多个物理卷组成，在建立物理卷组之后，可以自由从该物理卷组中添加或者移除物理卷，LVM中可以有一个VG或者多个VG</p>
 <h3 id="逻辑卷组（LV）"><a href="#逻辑卷组（LV）" class="headerlink" title="逻辑卷组（LV）"></a><strong>逻辑卷组（LV）</strong></h3><p>终于到这最后一步了，最终由VG切成的LV才能够被格式化使用的类似分区的东西了，从而能供我们挂载使用，需要注意的是LVM的大小不是连续的，这要根据PE的大小情况而定</p>
-<h2 id="具体的操作流程"><a href="#具体的操作流程" class="headerlink" title="具体的操作流程"></a>具体的操作流程</h2><ol>
-<li><strong>分区阶段：</strong><br>首先将需要进行添加到LVM中的分区用fdisk工具将其系统标识符改为8e（fdisk工具的使用比较简单，在此不多加赘述，需要注意的是：在 <code>fdisk</code> 执行完成之后要运行 <code>partprobe</code>）</li>
-<li><strong>PV阶段：</strong></li>
-</ol>
+<h2 id="具体的操作流程"><a href="#具体的操作流程" class="headerlink" title="具体的操作流程"></a>具体的操作流程</h2><p><strong>分区阶段：</strong><br>首先将需要进行添加到LVM中的分区用fdisk工具将其系统标识符改为8e（fdisk工具的使用比较简单，在此不多加赘述，需要注意的是：在 <code>fdisk</code> 执行完成之后要运行 <code>partprobe</code>）<br><strong>PV阶段：</strong></p>
 <table>
 <thead>
 <tr>
@@ -290,9 +287,7 @@ LVM（Logical Volume Manager）简述LVM">
 </tr>
 </tbody>
 </table>
-<ol>
-<li><strong>VG阶段</strong></li>
-</ol>
+<p> <strong>VG阶段</strong></p>
 <table>
 <thead>
 <tr>
@@ -331,10 +326,7 @@ LVM（Logical Volume Manager）简述LVM">
 </tr>
 </tbody>
 </table>
-<p> 注意vgcreate的命令使用格式，可以用<code>vgcreate -h</code>进行查询，VG的命名由自己设定</p>
-<ol>
-<li><strong>LV阶段</strong></li>
-</ol>
+<p>注意vgcreate的命令使用格式，可以用<code>vgcreate -h</code>进行查询，VG的命名由自己设定<br><strong>LV阶段</strong></p>
 <table>
 <thead>
 <tr>
@@ -373,9 +365,7 @@ LVM（Logical Volume Manager）简述LVM">
 </tr>
 </tbody>
 </table>
-<ol>
-<li><strong>文件系统阶段</strong><br>用 <code>mkfs</code> 命令，对第四步进行了的lv进行格式化，并且用mount命令进行挂载，然后即可使用</li>
-</ol>
+<p><strong>文件系统阶段</strong><br>用 <code>mkfs</code> 命令，对第四步进行了的lv进行格式化，并且用mount命令进行挂载，然后即可使用</p>
 <h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a><strong>实际操作</strong></h2><p>已经用fdisk分出了分区并且将其SystemID设置成为了8e之后进行如下操作<br>查看磁盘状态如下：</p>
 <pre><code>[root@localhost ~]# fdisk -l
 
@@ -448,7 +438,7 @@ Writing superblocks and filesystem accounting information: 完成
 [root@localhost ~]# df /mnt/test
 文件系统                        1K-块  已用    可用 已用% 挂载点
 /dev/mapper/LuckyCoder-coder1 1821764  5520 1705652    1% /mnt/test
-</code></pre><h3 id="扩大LV的容量第一种方式"><a href="#扩大LV的容量第一种方式" class="headerlink" title="扩大LV的容量第一种方式"></a><strong>扩大LV的容量第一种方式</strong></h3><h4 id="首先将VG扩容"><a href="#首先将VG扩容" class="headerlink" title="首先将VG扩容"></a><strong>首先将VG扩容</strong></h4><pre><code>[root@localhost ~]# vgextend LuckyCoder /dev/sda6
+</code></pre><h3 id="扩大LV的容量"><a href="#扩大LV的容量" class="headerlink" title="扩大LV的容量"></a><strong>扩大LV的容量</strong></h3><h4 id="首先将VG扩容"><a href="#首先将VG扩容" class="headerlink" title="首先将VG扩容"></a><strong>首先将VG扩容</strong></h4><pre><code>[root@localhost ~]# vgextend LuckyCoder /dev/sda6
 Volume group &quot;LuckyCoder&quot; successfully extended
 </code></pre><h4 id="然后给LV扩容"><a href="#然后给LV扩容" class="headerlink" title="然后给LV扩容"></a><strong>然后给LV扩容</strong></h4><pre><code>[root@localhost ~]# lvextend -L +300M /dev/LuckyCoder/coder
 Size of logical volume LuckyCoder/coder changed from 1020.00 MiB (255     extents) to 1.29 GiB (330 extents).
