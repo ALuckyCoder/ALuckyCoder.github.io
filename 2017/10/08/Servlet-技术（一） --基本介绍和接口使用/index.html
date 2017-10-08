@@ -7,13 +7,27 @@
 
     
 
-    <title>centos7杂项 | LuckyCoder&#39;s Blog</title>
+    <title>Servlet 技术（一） --基本介绍和接口使用 | LuckyCoder&#39;s Blog</title>
     <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Servlet简介Servle就是一种实现了Servlet接口的类，由Web容器负责创建并调用，用于接收和响应用户的请求
+Servlet接口Servlet接口中定义了5个抽象的方法，具体如下表所示
+
+
+
+方法声明
+功能描述
+
+
+
+
+void init(ServletConfig config)
+负责">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="Servlet 技术（一） --基本介绍和接口使用"/>
     <meta property="og:site_name" content="LuckyCoder&#39;s Blog"/>
 
     
@@ -223,30 +237,146 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Tomcat与Java-Web/">Tomcat与Java Web</a>
+
 
         
-            <a class="breadcrumb" href="/categories/centos7杂项/">centos7杂项</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Servlet 技术（一） --基本介绍和接口使用</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2017-10-08T02:59:04.000Z"><a href="/2017/10/08/Servlet-技术（一） --基本介绍和接口使用/">2017-10-08</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/10/07/centos7杂项（一）/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-10-07T07:03:09.000Z">2017-10-07</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                centos杂项（一）
-            </a>
+            <a href="/tags/Servlet技术/" class="chip pink lighten-1">Servlet技术</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Servlet简介"><span class="section table-of-contents-text">Servlet简介</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Servlet接口"><span class="section table-of-contents-text">Servlet接口</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Servlet生命周期"><span class="section table-of-contents-text">Servlet生命周期</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#初始化阶段"><span class="section table-of-contents-text">初始化阶段</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#运行阶段"><span class="section table-of-contents-text">运行阶段</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#销毁阶段"><span class="section table-of-contents-text">销毁阶段</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#HttpServlet主要功能"><span class="section table-of-contents-text">**HttpServlet主要功能</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Servlet虚拟路径的映射"><span class="section table-of-contents-text">Servlet虚拟路径的映射</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Servlet的多重映射"><span class="section table-of-contents-text">Servlet的多重映射</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Servlet映射路径中使用通配符"><span class="section table-of-contents-text">Servlet映射路径中使用通配符</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#缺省Servlet"><span class="section table-of-contents-text">缺省Servlet</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#ServletConfig接口"><span class="section table-of-contents-text">ServletConfig接口</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#ServletContext接口"><span class="section table-of-contents-text">ServletContext接口</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#获取Web应用程序的初始化参数"><span class="section table-of-contents-text">获取Web应用程序的初始化参数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#实现多个Servlet对象共享数据"><span class="section table-of-contents-text">实现多个Servlet对象共享数据</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#读取Web应用下的资源文件"><span class="section table-of-contents-text">读取Web应用下的资源文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#获取资源的绝对路径"><span class="section table-of-contents-text">获取资源的绝对路径</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h2 id="Servlet简介"><a href="#Servlet简介" class="headerlink" title="Servlet简介"></a><strong>Servlet简介</strong></h2><p>Servle就是一种实现了Servlet接口的类，由Web容器负责创建并调用，用于接收和响应用户的请求</p>
+<h2 id="Servlet接口"><a href="#Servlet接口" class="headerlink" title="Servlet接口"></a><strong>Servlet接口</strong></h2><p>Servlet接口中定义了5个抽象的方法，具体如下表所示</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法声明</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">void init(ServletConfig config)</td>
+<td style="text-align:left">负责Servlet初始化工作，容器在创建好Servlet对象后，就会调用此方法</td>
+</tr>
+<tr>
+<td style="text-align:left">ServletConfig getServletConfig()</td>
+<td style="text-align:left">返回容器调用 init(ServletConfig config) 方法传递给Servlet的Servlet对象</td>
+</tr>
+<tr>
+<td style="text-align:left">String getServletInfo()</td>
+<td style="text-align:left">返回一个字符串，其中包含了关于Servlet的信息，例如，作者，版本和版权等信息</td>
+</tr>
+<tr>
+<td style="text-align:left">void service(ServletRequest request， ServletResponse response)</td>
+<td style="text-align:left">负责响应用户的请求，当容器接收到客户段访问Servlet对象的请求时，就会调用此方法</td>
+</tr>
+<tr>
+<td style="text-align:left">void destroy()</td>
+<td style="text-align:left">负责释放Servlet对象占用的资源，当Servlet对象被销毁时，容器就会调用此方法</td>
+</tr>
+</tbody>
+</table>
+<p>其中init，service，destroy是Servlet生命周期方法</p>
+<h2 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a><strong>Servlet生命周期</strong></h2><p>如下图所示:<br><img src="/images/ServletLive.png" alt="Servlet生命周期"></p>
+<p>Servlet的生命周期可以分为三个阶段</p>
+<h3 id="初始化阶段"><a href="#初始化阶段" class="headerlink" title="初始化阶段"></a><strong>初始化阶段</strong></h3><p>当客户端向Servlet容器发出HTTP请求要求访问Servlet时，Servlet容器首先会解析请求，检查内存中是否已经有了该Serlvet对象，如果有直接使用该Serlvet对象，如果没有就创建Servlet实例对象，然后通过调用init()方法实现Servlet的初始化工作。需要注意的是，在Servlet的整个生命周期内，它的init()方法只被调用一次。</p>
+<h3 id="运行阶段"><a href="#运行阶段" class="headerlink" title="运行阶段"></a><strong>运行阶段</strong></h3><p>这是Servlet生命周期中最重要的阶段，在这个阶段，Servlet容器会为这个请求创建代表HTTP请求的ServletRequest对象和代表HTTP响应的ServletResponse对象，然后将它们作为参数传递给Servlet的service()方法。在Servlet的整个生命周期内，对于Servlet的每一次访问请求，service()方法在Servlet的整个生命周期中会被调用多次。</p>
+<h3 id="销毁阶段"><a href="#销毁阶段" class="headerlink" title="销毁阶段"></a><strong>销毁阶段</strong></h3><p>当服务器关闭或web应用被移除出容器时，Serlvet随着web应用的销毁而销毁。在销毁Servlet之前，Servlet容器会调用Servlet的destroy()方法，以便让Servlet对象释放它所占用的资源。在Servlet的整个生命周期中，destroy()方法也只被调用一次。需要注意的是，Servlet对象一旦创建就会驻留在内存中等待客户端的访问，直到服务器关闭，或web应用被移除出容器时Servlet对象才会销毁</p>
+<p>实例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<h2 id="HttpServlet主要功能"><a href="#HttpServlet主要功能" class="headerlink" title="**HttpServlet主要功能"></a>**HttpServlet主要功能</h2><ul>
+<li>根据用户请求方式的不同，定义相应的doXxx()方法处理用户请求，例如，与GET请求方式对应的doGet()方法，与POST方式对应的doPost()方法。</li>
+<li>通过service()方法将HTTP请求和响应分别转为HttpServletRequest和HttpServletResponse类型的对象</li>
+</ul>
+<p>一般情况下我们就直接继承HttpServlet然后覆盖HttpServelet中的doGet()和doPost()方法就可以了，这里不多加赘述，这是基本的，重复的最多的步骤了</p>
+<h2 id="Servlet虚拟路径的映射"><a href="#Servlet虚拟路径的映射" class="headerlink" title="Servlet虚拟路径的映射"></a><strong>Servlet虚拟路径的映射</strong></h2><p>在web.xml文件中，一个<servlert-mapping>元素用于映射一个Servlet的对外访问路径，该路径也称为虚拟路径。创建好的Servlet只有映射成虚拟路径，客户端才能对其进行访问</servlert-mapping></p>
+<h3 id="Servlet的多重映射"><a href="#Servlet的多重映射" class="headerlink" title="Servlet的多重映射"></a><strong>Servlet的多重映射</strong></h3><p>Servlet的多重映射指的是同一个Servlet可以被映射成多个虚拟路径。它的实现方式有两种，具体如下：</p>
+<ol>
+<li>配置多个<servlet-mapping>元素</servlet-mapping></li>
+<li>在一个<servlet-mapping>元素下配置多个<url-pattern>子元素</url-pattern></servlet-mapping></li>
+</ol>
+<h3 id="Servlet映射路径中使用通配符"><a href="#Servlet映射路径中使用通配符" class="headerlink" title="Servlet映射路径中使用通配符"></a><strong>Servlet映射路径中使用通配符</strong></h3><p>若希望某个目录下的所有路径都可以访问同一个Servlet，这时，可以在Servlet映射的路径中使用通配符“*”。通配符的格式只有两种：</p>
+<ol>
+<li>格式为“<em>.扩展名”。 例如“</em>.do”匹配以“.do”结尾的所有URL地址。</li>
+<li>格式为“/<em>”，例如“/abc/</em>”匹配以“/abc”开始的所有URL地址。</li>
+</ol>
+<h3 id="缺省Servlet"><a href="#缺省Servlet" class="headerlink" title="缺省Servlet"></a>缺省Servlet</h3><ul>
+<li>如果某个Servlet的映射路径仅仅是一个正斜线（/），那么这个Servlet就是当前Web应用的缺省Servlet。</li>
+<li>Servlet服务器在接收到访问请求时，如果在web.xml文件中找不到匹配的<servlet-mapping>元素的URL，就会将访问请求交给缺省Servlet处理，也就是说，缺省Servlet用于处理其他Servlet都不处理的访问请求。</servlet-mapping></li>
+</ul>
+<h2 id="ServletConfig接口"><a href="#ServletConfig接口" class="headerlink" title="ServletConfig接口"></a><strong>ServletConfig接口</strong></h2><p>To be continue……</p>
+<h2 id="ServletContext接口"><a href="#ServletContext接口" class="headerlink" title="ServletContext接口"></a><strong>ServletContext接口</strong></h2><h3 id="获取Web应用程序的初始化参数"><a href="#获取Web应用程序的初始化参数" class="headerlink" title="获取Web应用程序的初始化参数"></a><strong>获取Web应用程序的初始化参数</strong></h3><p>To be continue……</p>
+<h3 id="实现多个Servlet对象共享数据"><a href="#实现多个Servlet对象共享数据" class="headerlink" title="实现多个Servlet对象共享数据"></a><strong>实现多个Servlet对象共享数据</strong></h3><p>To be continue……</p>
+<h3 id="读取Web应用下的资源文件"><a href="#读取Web应用下的资源文件" class="headerlink" title="读取Web应用下的资源文件"></a><strong>读取Web应用下的资源文件</strong></h3><p>To be continue……</p>
+<h3 id="获取资源的绝对路径"><a href="#获取资源的绝对路径" class="headerlink" title="获取资源的绝对路径"></a><strong>获取资源的绝对路径</strong></h3><p>To be continue……</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2017/10/08/字符乱码问题的解决办法/" rel="next" title="字符乱码问题的解决办法">
+    上一篇：字符乱码问题的解决办法
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/10/08/关于HTTP协议/" rel="next" title="关于HTTP协议">
+    下一篇：关于HTTP协议
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>

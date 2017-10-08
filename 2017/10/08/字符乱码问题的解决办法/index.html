@@ -7,13 +7,20 @@
 
     
 
-    <title>centos7杂项 | LuckyCoder&#39;s Blog</title>
+    <title>字符乱码问题的解决办法 | LuckyCoder&#39;s Blog</title>
     <meta name="author" content="John Doe">
+    
+    <meta name="description" content="简单的解释发生的原因
+由于计算机中的数据都是以二进制形式存储的，因此，当传输文本时，就会发生字符和字节之间的转换。
+字符与字节之间的转换是通过查码表完成的，将字符转换成字节的过程称为编码，将字节转换成字符的过程称为解码。
+如果编码和解码使用的码表不一致，就会导致乱码问题。
+解决办法方式1
+  //设">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="字符乱码问题的解决办法"/>
     <meta property="og:site_name" content="LuckyCoder&#39;s Blog"/>
 
     
@@ -223,30 +230,87 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Tomcat与Java-Web/">Tomcat与Java Web</a>
+
 
         
-            <a class="breadcrumb" href="/categories/centos7杂项/">centos7杂项</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>字符乱码问题的解决办法</h1>
+    
 
 
-    <div class="collection mt-0">
-        
-            <a href="/2017/10/07/centos7杂项（一）/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-10-07T07:03:09.000Z">2017-10-07</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                centos杂项（一）
-            </a>
-        
+            </div>
+            <time class="pink-link-context" datetime="2017-10-08T07:26:10.000Z"><a href="/2017/10/08/字符乱码问题的解决办法/">2017-10-08</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#简单的解释发生的原因"><span class="section table-of-contents-text">简单的解释发生的原因</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#解决办法"><span class="section table-of-contents-text">解决办法</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h3 id="简单的解释发生的原因"><a href="#简单的解释发生的原因" class="headerlink" title="简单的解释发生的原因"></a><strong>简单的解释发生的原因</strong></h3><ul>
+<li>由于计算机中的数据都是以二进制形式存储的，因此，当传输文本时，就会发生字符和字节之间的转换。</li>
+<li>字符与字节之间的转换是通过查码表完成的，将字符转换成字节的过程称为编码，将字节转换成字符的过程称为解码。</li>
+<li><p>如果编码和解码使用的码表不一致，就会导致乱码问题。<br><img src="/images/encoding.png" alt="encoding"></p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a><strong>解决办法</strong></h3><p><strong>方式1</strong></p>
+<p>  //设置HttpServletResponse使用utf-8编码<br>  response.setCharacterEncoding(“utf-8”);<br>  //通知浏览器使用utf-8解码<br>  response.setHeader(“Content-Type”,”text/html;charset=utf-8”);</p>
+</li>
+</ul>
+<p><strong>方式2</strong></p>
+<pre><code>//包含第一种方式的两个功能
+response.setContentType(&quot;text/html;charset=utf-8&quot;);
+</code></pre>
+                
+<p class="pink-link-context">
+    <a href="/2017/10/08/Servlet技术（二） --请求和响应/" rel="next" title="Servlet技术（二） --请求和响应">
+    上一篇：Servlet技术（二） --请求和响应
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/10/08/Servlet-技术（一） --基本介绍和接口使用/" rel="next" title="Servlet 技术（一） --基本介绍和接口使用">
+    下一篇：Servlet 技术（一） --基本介绍和接口使用
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
     </div>
+</article>
+
+
+
+
 
 
 </div>
