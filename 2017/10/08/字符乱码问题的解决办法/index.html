@@ -14,8 +14,9 @@
 由于计算机中的数据都是以二进制形式存储的，因此，当传输文本时，就会发生字符和字节之间的转换。
 字符与字节之间的转换是通过查码表完成的，将字符转换成字节的过程称为编码，将字节转换成字符的过程称为解码。
 如果编码和解码使用的码表不一致，就会导致乱码问题。
+
 解决办法方式1
-  //设">
+//设置">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -285,12 +286,14 @@
                 <h3 id="简单的解释发生的原因"><a href="#简单的解释发生的原因" class="headerlink" title="简单的解释发生的原因"></a><strong>简单的解释发生的原因</strong></h3><ul>
 <li>由于计算机中的数据都是以二进制形式存储的，因此，当传输文本时，就会发生字符和字节之间的转换。</li>
 <li>字符与字节之间的转换是通过查码表完成的，将字符转换成字节的过程称为编码，将字节转换成字符的过程称为解码。</li>
-<li><p>如果编码和解码使用的码表不一致，就会导致乱码问题。<br><img src="/images/encoding.png" alt="encoding"></p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a><strong>解决办法</strong></h3><p><strong>方式1</strong></p>
-<p>  //设置HttpServletResponse使用utf-8编码<br>  response.setCharacterEncoding(“utf-8”);<br>  //通知浏览器使用utf-8解码<br>  response.setHeader(“Content-Type”,”text/html;charset=utf-8”);</p>
-</li>
+<li>如果编码和解码使用的码表不一致，就会导致乱码问题。<br><img src="/images/encoding.png" alt="encoding"></li>
 </ul>
-<p><strong>方式2</strong></p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a><strong>解决办法</strong></h3><p><strong>方式1</strong></p>
+<pre><code>//设置HttpServletResponse使用utf-8编码
+response.setCharacterEncoding(&quot;utf-8&quot;);
+//通知浏览器使用utf-8解码
+response.setHeader(&quot;Content-Type&quot;,&quot;text/html;charset=utf-8&quot;);
+</code></pre><p><strong>方式2</strong></p>
 <pre><code>//包含第一种方式的两个功能
 response.setContentType(&quot;text/html;charset=utf-8&quot;);
 </code></pre>
