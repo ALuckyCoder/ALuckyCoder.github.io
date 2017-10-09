@@ -383,12 +383,12 @@ void init(ServletConfig config)
 </table>
 <p><strong>先以getInitParameter()方法为例，分步讲解该方法的使用</strong>（如果不明白web.xml文档的作用请看<a href="#">web.xml文件</a>）      </p>
 <ol>
-<li><strong>在web.xml文件中做如下配置</strong><br><img src="/images/servlet技术（一）servletconfig1.png" alt="ServletConfig配置">               </li>
+<li><strong>在web.xml文件中做如下配置</strong><br><img src="/images/servletconfig1.png" alt="ServletConfig配置">               </li>
 <li><strong>编写TestServlet类，实现读取web.xml文件中的参数信息（主要代码如下）</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		PrintWriter out = response.getWriter();</div><div class="line">		ServletConfig config = this.getServletConfig();</div><div class="line">		String param = config.getInitParameter(&quot;encoding&quot;);</div><div class="line">		out.println(&quot;encoding=&quot;+param);</div><div class="line">		out.close();</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="ServletContext接口"><a href="#ServletContext接口" class="headerlink" title="ServletContext接口"></a><strong>ServletContext接口</strong></h2><h3 id="获取Web应用程序的初始化参数"><a href="#获取Web应用程序的初始化参数" class="headerlink" title="获取Web应用程序的初始化参数"></a><strong>获取Web应用程序的初始化参数</strong></h3><ol>
-<li>在web.xml文件中配置初始化信息如下<br><img src="/images/servlet技术（一）servletcontext1.png" alt="ServletContext配置">               </li>
+<li>在web.xml文件中配置初始化信息如下<br><img src="/images/servletcontext1.png" alt="ServletContext配置">               </li>
 <li>通过编写程序实现获取Web应用程序的初始化参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</div><div class="line">	// TODO Auto-generated method stub</div><div class="line">	PrintWriter out = response.getWriter();</div><div class="line">	ServletConfig config = this.getServletConfig();</div><div class="line">	String param = config.getInitParameter(&quot;encoding&quot;);</div><div class="line">	out.println(&quot;encoding=&quot;+param);</div><div class="line">	out.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -425,7 +425,7 @@ void init(ServletConfig config)
 <li>创建一个servlet2，调用 getAttribute方法得到一个值，然后用PrintWrite对象输出</li>
 <li>启动服务器，先访问servlet1，然后访问servlet2，于是得到结果</li>
 </ol>
-<h3 id="读取Web应用下的资源文件"><a href="#读取Web应用下的资源文件" class="headerlink" title="读取Web应用下的资源文件"></a><strong>读取Web应用下的资源文件</strong></h3><p>用于获取资源路径的方法如下所示<br><img src="/images/servlet技术（一）servletcontext3.png" alt="ServletContext使用"> </p>
+<h3 id="读取Web应用下的资源文件"><a href="#读取Web应用下的资源文件" class="headerlink" title="读取Web应用下的资源文件"></a><strong>读取Web应用下的资源文件</strong></h3><p>用于获取资源路径的方法如下所示<br><img src="/images/servletcontext3.png" alt="ServletContext使用"> </p>
 <h3 id="获取资源的绝对路径"><a href="#获取资源的绝对路径" class="headerlink" title="获取资源的绝对路径"></a><strong>获取资源的绝对路径</strong></h3><p>To be continue……</p>
 
                 
