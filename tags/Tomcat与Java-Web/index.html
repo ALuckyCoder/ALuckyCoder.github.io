@@ -7,19 +7,13 @@
 
     
 
-    <title>目录与文件权限的意义 | LuckyCoder&#39;s Blog</title>
+    <title>Tomcat与Java Web | LuckyCoder&#39;s Blog</title>
     <meta name="author" content="John Doe">
-    
-    <meta name="description" content="r(read)：对文件而言：可以读取此文件的实际内容，如读取文本文件的文字内容等（相关操作的命令有cat vim等）对目录而言：表示的是能够读取一个目录下文件的权限（相关的操作命令有ls）
-
-w(write)：对文件而言：可以编辑，新增或者是修改文件的内容（但不含删除该文件)对目录而言：
-
-新增新的">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="目录与文件权限的意义"/>
+    
     <meta property="og:site_name" content="LuckyCoder&#39;s Blog"/>
 
     
@@ -237,102 +231,30 @@ w(write)：对文件而言：可以编辑，新增或者是修改文件的内容
 
     <main>
         <div class="container main-container">
-    <nav class="page-nav hide-on-small-only">
+    
+
+<nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（分类目录）</span>
-        
-            
-    
-    
-    <a class="breadcrumb" href="/categories/centos7/">centos7</a>
-
-
+        <span class="breadcrumb">当前位置（标签）</span>
         
 
+        
+            <a class="breadcrumb" href="/tags/Tomcat与Java-Web/">Tomcat与Java Web</a>
         
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
-                
-    
-        <h1>目录与文件权限的意义</h1>
-    
 
 
-            </div>
-            <time class="pink-link-context" datetime="2017-09-28T02:43:38.000Z"><a href="/2017/09/28/目录与文件权限的意义/">2017-09-28</a></time>
-
-            <span id="busuanzi_container_page_pv" class="read-times-container">
-    <i class="fa fa-eye"></i>
-    <span id="busuanzi_value_page_pv"></span>
-</span>
-
-            
-    <div class="tags-row">
+    <div class="collection mt-0">
         
-            <a href="/tags/权限管理/" class="chip pink lighten-1">权限管理</a>
+            <a href="/2017/10/09/记录/" class="collection-item grey-text text-darken-1">
+                <time datetime="2017-10-09T03:35:49.000Z">2017-10-09</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                Tomcat与Java Web中尚待解决的问题
+            </a>
         
     </div>
-
-
-            <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#r-read-："><span class="section table-of-contents-text">r(read)：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#w-write-："><span class="section table-of-contents-text">w(write)：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#x："><span class="section table-of-contents-text">x：</span></a></li></ol>
-</div>
-
-
-            <div class="entry pink-link-context">
-                <h1 id="r-read-："><a href="#r-read-：" class="headerlink" title="r(read)："></a>r(read)：</h1><p><strong>对文件而言</strong>：<br>可以读取此文件的实际内容，如读取文本文件的文字内容等（相关操作的命令有cat vim等）<br><strong>对目录而言</strong>：<br>表示的是能够读取一个目录下文件的权限（相关的操作命令有ls）</p>
-<hr>
-<h1 id="w-write-："><a href="#w-write-：" class="headerlink" title="w(write)："></a>w(write)：</h1><p><strong>对文件而言</strong>：<br>可以编辑，新增或者是修改文件的内容（<strong>但不含删除该文件</strong>)<br><strong>对目录而言</strong>：</p>
-<ul>
-<li>新增新的文件与目录</li>
-<li><strong>删除已经存在的文件与目录（不论文件的权限为何，即rm操作）</strong></li>
-<li>将已经存在的文件或者目录重新命名</li>
-<li>转移该目录内的文件，目录位置（即mv cp操作）</li>
-</ul>
-<hr>
-<h1 id="x："><a href="#x：" class="headerlink" title="x："></a>x：</h1><p><strong>对于文件而言</strong>：<br>表示执行此文件的权限<br><strong>对于目录而言</strong>：<br>表示是否可以进入到该目录的权限（即cd操作）</p>
-<p>在上网络工程课的时候老师布置了一道题如下所示<br><img src="/images/excrise.jpg" alt="试题训练"><br>答案是只有4不行</p>
-<ol>
-<li>/groups/penguins目录对于同一组的成员具有x权限，即可进入</li>
-<li>/groups/penguins目录对于同一组的成员具有w权限，即可创建文件或目录</li>
-<li>/groups/penguins目录对于同一组的成员具有w权限，即可复制文件或目录</li>
-<li>因为 task.c文件对于同一组的成员不具有w权限，即不可进行编辑</li>
-<li>相当于新建一个文件后对其进行修改，新建的文件属于tux2（umask应该不至于连自己那一项也设置为0），所以可以编辑</li>
-<li>/groups/penguins目录对于同一组的成员具有w权限，即可移动文件或目录</li>
-</ol>
-
-                
-<p class="pink-link-context">
-    <a href="/2017/09/30/LVM-逻辑卷管理器/" rel="next" title="LVM(逻辑卷管理器)">
-    上一篇：LVM(逻辑卷管理器)
-  </a>
-</p>
-
-
-
-<p class="pink-link-context">
-    <a href="/2017/09/28/linux文件权限简要记录/" rel="next" title="linux文件权限简要记录">
-    下一篇：linux文件权限简要记录
-  </a>
-</p>
-
-
-            </div>
-			
-        </div>
-    </div>
-</article>
-
-
-
-
 
 
 </div>
