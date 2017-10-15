@@ -7,13 +7,26 @@
 
     
 
-    <title>Hexo | LuckyCoder&#39;s Blog</title>
+    <title>vim编辑器 | LuckyCoder&#39;s Blog</title>
     <meta name="author" content="John Doe">
+    
+    <meta name="description" content="vim的三种模式一般指令模式(command mode)打开文件的时候就进入了一般指令模式（这个是默认的模式），这个模式中可以移动光标，可以“删除字符”或者“删除整列”，也可以使用“复制，粘贴”来处理文件数据但是无法编辑文件内容
+常用按键说明
+
+
+按键
+效果
+
+
+
+
+ctrl + f
+屏幕向下移动一">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="vim编辑器"/>
     <meta property="og:site_name" content="LuckyCoder&#39;s Blog"/>
 
     
@@ -231,30 +244,349 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/centos7/">centos7</a>
+
 
         
-            <a class="breadcrumb" href="/categories/Hexo/">Hexo</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>vim编辑器</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2017-10-15T01:02:34.000Z"><a href="/2017/10/15/vim编辑器/">2017-10-15</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/09/26/hexo博客搭建流程/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-09-26T08:29:39.000Z">2017-09-26</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                hexo博客搭建流程
-            </a>
+            <a href="/tags/linux编辑器/" class="chip pink lighten-1">linux编辑器</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#vim的三种模式"><span class="section table-of-contents-text">vim的三种模式</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一般指令模式-command-mode"><span class="section table-of-contents-text">一般指令模式(command mode)</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#常用按键说明"><span class="section table-of-contents-text">常用按键说明</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#编辑模式-insert-mode"><span class="section table-of-contents-text">编辑模式(insert mode)</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#常用按键说明-1"><span class="section table-of-contents-text">常用按键说明</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#指令列命令模式"><span class="section table-of-contents-text">指令列命令模式</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#vim的暂存档，非正常退出的恢复"><span class="section table-of-contents-text">vim的暂存档，非正常退出的恢复</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#暂存档"><span class="section table-of-contents-text">暂存档</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#非正常退出之后的恢复"><span class="section table-of-contents-text">非正常退出之后的恢复</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#vim区块选择"><span class="section table-of-contents-text">vim区块选择</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#vim多文件编辑与多窗口功能"><span class="section table-of-contents-text">vim多文件编辑与多窗口功能</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#多文件编辑按键"><span class="section table-of-contents-text">多文件编辑按键</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#多窗口功能"><span class="section table-of-contents-text">多窗口功能</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#情景描述"><span class="section table-of-contents-text">情景描述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#多窗口情况下的按键功能"><span class="section table-of-contents-text">多窗口情况下的按键功能</span></a></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#vim的关键字补全"><span class="section table-of-contents-text">vim的关键字补全</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#vim环境设定与记录"><span class="section table-of-contents-text">vim环境设定与记录</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h1 id="vim的三种模式"><a href="#vim的三种模式" class="headerlink" title="vim的三种模式"></a><strong>vim的三种模式</strong></h1><h2 id="一般指令模式-command-mode"><a href="#一般指令模式-command-mode" class="headerlink" title="一般指令模式(command mode)"></a><strong>一般指令模式(command mode)</strong></h2><p>打开文件的时候就进入了一般指令模式（这个是默认的模式），这个模式中可以移动光标，可以“删除字符”或者“删除整列”，也可以使用“复制，粘贴”来处理文件数据<br>但是无法编辑文件内容</p>
+<h3 id="常用按键说明"><a href="#常用按键说明" class="headerlink" title="常用按键说明"></a><strong>常用按键说明</strong></h3><table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ctrl + f</td>
+<td style="text-align:center">屏幕向下移动一页，相当于[Page Down]按键</td>
+</tr>
+<tr>
+<td style="text-align:center">ctrl + b</td>
+<td style="text-align:center">屏幕向上移动一页，相当于[Page Up]按键</td>
+</tr>
+<tr>
+<td style="text-align:center">ctrl + d</td>
+<td style="text-align:center">屏幕向下移动半页</td>
+</tr>
+<tr>
+<td style="text-align:center">ctrl + u</td>
+<td style="text-align:center">屏幕向上移动半页</td>
+</tr>
+<tr>
+<td style="text-align:center">x,X</td>
+<td style="text-align:center">在一列字当中，x为向后删除一个字符，X为向前删除一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">数字0，移动到这一列的最前面字符处，相当与[Home]按键</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:center">移动到这一列的最后面字符处，相当于[End]按键</td>
+</tr>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:center">复原前一个动作</td>
+</tr>
+<tr>
+<td style="text-align:center">ctrl + r</td>
+<td style="text-align:center">重做前一个动作</td>
+</tr>
+<tr>
+<td style="text-align:center">gg</td>
+<td style="text-align:center">移动到这个文件的第一列，相当于1G</td>
+</tr>
+<tr>
+<td style="text-align:center">dd</td>
+<td style="text-align:center">删除游标所在的那一整列</td>
+</tr>
+<tr>
+<td style="text-align:center">ndd</td>
+<td style="text-align:center">n为数字，删除光标所在的向下n列</td>
+</tr>
+<tr>
+<td style="text-align:center">yy</td>
+<td style="text-align:center">复制游标所在的那一列</td>
+</tr>
+<tr>
+<td style="text-align:center">nyy</td>
+<td style="text-align:center">n为数字，复制光标所在的向下n列</td>
+</tr>
+<tr>
+<td style="text-align:center">p, P</td>
+<td style="text-align:center">p为将已复制的数据在光标下一列粘贴上，P则为粘贴在游标上一列</td>
+</tr>
+<tr>
+<td style="text-align:center">n<enter></enter></td>
+<td style="text-align:center">n为数字，光标向下移动n列</td>
+</tr>
+<tr>
+<td style="text-align:center">/word</td>
+<td style="text-align:center">向光标之下寻找一个名称为word的字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">?word</td>
+<td style="text-align:center">向光标之上寻找一个字符串名称为word的字符串</td>
+</tr>
+</tbody>
+</table>
+<h2 id="编辑模式-insert-mode"><a href="#编辑模式-insert-mode" class="headerlink" title="编辑模式(insert mode)"></a><strong>编辑模式(insert mode)</strong></h2><p>当按下(i, I, o, O, a, A, r, R)等任何一个字符之后进入编辑模式，这样就可以对文本内容进行编辑了，注意：如果要回到一般的指令模式时，则必须要按下[Esc]这个按键即可退出编辑模式</p>
+<h3 id="常用按键说明-1"><a href="#常用按键说明-1" class="headerlink" title="常用按键说明"></a><strong>常用按键说明</strong></h3><table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i，I</td>
+<td style="text-align:left">进入插入模式(Insert mode)，i为从目前光标所在处插入，I为在目前所在列的第一个非空格符处开始插入</td>
+</tr>
+<tr>
+<td style="text-align:left">a，A</td>
+<td style="text-align:left">进入插入模式(insert mode)，a为从目前光标所在的下一个字符处开始插入，A为从光标所在列的最后一个字符处开始插入</td>
+</tr>
+<tr>
+<td style="text-align:left">o, O</td>
+<td style="text-align:left">进入插入模式(insert mode)，o为在目前光标所在的下一列处插入新的一列，O为在目前光标所在处的上一列插入新的一列</td>
+</tr>
+<tr>
+<td style="text-align:left">r，R</td>
+<td style="text-align:left">进入取代模式(Replace mode)，r只会取代光标所在那一个字符一次；R会一直取代光标所在的文字，直到按下Esc为止</td>
+</tr>
+<tr>
+<td style="text-align:left">Esc</td>
+<td style="text-align:left">退出编辑模式，回到一般指令模式中</td>
+</tr>
+</tbody>
+</table>
+<h2 id="指令列命令模式"><a href="#指令列命令模式" class="headerlink" title="指令列命令模式"></a><strong>指令列命令模式</strong></h2><p>在一般模式中，输入(: / ?)三个中的任何一个按钮，就可以进入指令列命令模式，这个模式中可以”查找字符”，而“读取”，“存盘”，“大量取代字符”，“离开vim”，“显示行号”等等动作都是在这个模式中达成的</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:w</td>
+<td style="text-align:center">将编辑的数据写入硬盘文件中</td>
+</tr>
+<tr>
+<td style="text-align:center">:q</td>
+<td style="text-align:center">离开vim</td>
+</tr>
+<tr>
+<td style="text-align:center">:wq</td>
+<td style="text-align:center">存储后离开</td>
+</tr>
+<tr>
+<td style="text-align:center">:set nu</td>
+<td style="text-align:center">显示行号，设定之后，会在每一列的前缀显示该列的行号</td>
+</tr>
+<tr>
+<td style="text-align:center">:set nonu</td>
+<td style="text-align:center">取消行号</td>
+</tr>
+</tbody>
+</table>
+<h1 id="vim的暂存档，非正常退出的恢复"><a href="#vim的暂存档，非正常退出的恢复" class="headerlink" title="vim的暂存档，非正常退出的恢复"></a><strong>vim的暂存档，非正常退出的恢复</strong></h1><h2 id="暂存档"><a href="#暂存档" class="headerlink" title="暂存档"></a><strong>暂存档</strong></h2><p>我们在使用vim编辑的时候，vim会在与编辑的文件的目录下，再建立一个名为.filename.swap的文件，对filename做的动作就会被记录到这个.filename.swap中</p>
+<h2 id="非正常退出之后的恢复"><a href="#非正常退出之后的恢复" class="headerlink" title="非正常退出之后的恢复"></a><strong>非正常退出之后的恢复</strong></h2><p>当非正常推出后，vim会出现一些警告信息，以下是如何处理这些警告信息</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">(O)pen Read-Only</td>
+<td style="text-align:left">打开此文件成为只读档</td>
+</tr>
+<tr>
+<td style="text-align:left">(E)dit anyway</td>
+<td style="text-align:left">正常方式打开需要编辑的那个文件，并不会载入暂存盘的内容，不过很容易出现两个使用者互相改变对方的文件等问题</td>
+</tr>
+<tr>
+<td style="text-align:left">(R)ecover</td>
+<td style="text-align:left">加载暂存盘的内容，用于救回之前未储存的工作</td>
+</tr>
+<tr>
+<td style="text-align:left">(D)elte it</td>
+<td style="text-align:left">开启文件之前将暂存盘删除(.swap文件)</td>
+</tr>
+<tr>
+<td style="text-align:left">(Q)uit</td>
+<td style="text-align:left">按下q就离开vim</td>
+</tr>
+<tr>
+<td style="text-align:left">(A)bort</td>
+<td style="text-align:left">忽略这个编辑行为，与q类似</td>
+</tr>
+</tbody>
+</table>
+<h1 id="vim区块选择"><a href="#vim区块选择" class="headerlink" title="vim区块选择"></a><strong>vim区块选择</strong></h1><table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">v</td>
+<td style="text-align:left">字符选择，会将光标经过的地方反白选择!</td>
+</tr>
+<tr>
+<td style="text-align:left">V</td>
+<td style="text-align:left">列选择，会将光标经过的列反白选择</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl + v</td>
+<td style="text-align:left">区块选择，可以用长方形的方式选择资料</td>
+</tr>
+<tr>
+<td style="text-align:left">y</td>
+<td style="text-align:left">将反白的地方复制起来</td>
+</tr>
+<tr>
+<td style="text-align:left">d</td>
+<td style="text-align:left">将反白的地方删除掉</td>
+</tr>
+<tr>
+<td style="text-align:left">p</td>
+<td style="text-align:left">将刚刚复制的区块，在游标所在处贴上</td>
+</tr>
+</tbody>
+</table>
+<h1 id="vim多文件编辑与多窗口功能"><a href="#vim多文件编辑与多窗口功能" class="headerlink" title="vim多文件编辑与多窗口功能"></a><strong>vim多文件编辑与多窗口功能</strong></h1><h2 id="多文件编辑按键"><a href="#多文件编辑按键" class="headerlink" title="多文件编辑按键"></a><strong>多文件编辑按键</strong></h2><table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">:n</td>
+<td style="text-align:left">编辑下一个文件</td>
+</tr>
+<tr>
+<td style="text-align:left">:N</td>
+<td style="text-align:left">编辑上一个文件</td>
+</tr>
+<tr>
+<td style="text-align:left">:files</td>
+<td style="text-align:left">列出目前这个vim开启的所有文件</td>
+</tr>
+</tbody>
+</table>
+<p>例子： To be continue……</p>
+<h2 id="多窗口功能"><a href="#多窗口功能" class="headerlink" title="多窗口功能"></a><strong>多窗口功能</strong></h2><h3 id="情景描述"><a href="#情景描述" class="headerlink" title="情景描述"></a><strong>情景描述</strong></h3><ul>
+<li>当进行一个文件的操作时候需要对照另外一个文件的时候多窗口功能就很有必要了</li>
+<li>当一个文件非常大，查阅后面的数据时候，要对照前面的数据<h3 id="多窗口情况下的按键功能"><a href="#多窗口情况下的按键功能" class="headerlink" title="多窗口情况下的按键功能"></a><strong>多窗口情况下的按键功能</strong></h3>| 操作 | 效果 |<br>| :—- | :—- |<br>| :sp [filename] | 开启一个新窗口，如果有filename，表示在新窗口开启一个新文件，否则表示两个窗口为同一个文件内容（同步显示）<br>| ctrl + w + [j，↓] | 光标移动到下方的窗口 |<br>| ctrl + w + [k，↑] | 光标移动到上方的窗口 |<br>| ctrl + w + q | 类似于:q，离开 |</li>
+</ul>
+<h1 id="vim的关键字补全"><a href="#vim的关键字补全" class="headerlink" title="vim的关键字补全"></a><strong>vim的关键字补全</strong></h1><p><strong>主要操作如下</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">组合按钮</th>
+<th style="text-align:left">补齐的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ctrl + x  -&gt; ctrl + n</td>
+<td style="text-align:left">通过目前正在编辑的这个文件的内容文字作为关键词，予以补齐</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl + x -&gt; ctrl + f</td>
+<td style="text-align:left">以当前目录内的文件名作为关键词，予以补齐</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl + x -&gt; ctrl + o</td>
+<td style="text-align:left">以扩展名作为语法补充，以vim内建的关键词，予以补齐</td>
+</tr>
+</tbody>
+</table>
+<p>需要进行实验：To be continue……</p>
+<h1 id="vim环境设定与记录"><a href="#vim环境设定与记录" class="headerlink" title="vim环境设定与记录"></a><strong>vim环境设定与记录</strong></h1><p>To be continue……</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2017/10/15/linux中尚待解决的问题/" rel="next" title="linux中尚待解决的问题">
+    上一篇：linux中尚待解决的问题
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/10/09/Tomcat与Java Web中尚待解决的问题/" rel="next" title="Tomcat与Java Web中尚待解决的问题">
+    下一篇：Tomcat与Java Web中尚待解决的问题
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
