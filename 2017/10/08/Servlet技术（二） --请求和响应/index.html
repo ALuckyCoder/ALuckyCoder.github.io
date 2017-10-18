@@ -297,9 +297,7 @@
 <li><strong>获取请求参数以及通过request对象传递数据</strong></li>
 <li><strong>请求重定向（数据会被丢失）</strong></li>
 <li><strong>请求转发 （数据不会被丢失）</strong></li>
-<li><strong>请求包含 （返回的包括主题servlet和包含的servlet两部分内容）</strong><br>在编写这方面的程序的时候经常会遇到乱码问题，详情请看<a href="https://aluckycoder.github.io/2017/10/08/%E5%AD%97%E7%AC%A6%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_blank" rel="external">字符乱码问题的解决办法</a></li>
-</ol>
-<h1 id="HttpServletResponse对象"><a href="#HttpServletResponse对象" class="headerlink" title="HttpServletResponse对象"></a><strong>HttpServletResponse对象</strong></h1><h3 id="发送状态码相关的方法"><a href="#发送状态码相关的方法" class="headerlink" title="发送状态码相关的方法"></a><strong>发送状态码相关的方法</strong></h3><ol>
+<li><strong>请求包含 （返回的包括主题servlet和包含的servlet两部分内容）</strong><br>在编写这方面的程序的时候经常会遇到乱码问题，详情请看<a href="https://aluckycoder.github.io/2017/10/08/%E5%AD%97%E7%AC%A6%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_blank" rel="external">字符乱码问题的解决办法</a><h1 id="HttpServletResponse对象"><a href="#HttpServletResponse对象" class="headerlink" title="HttpServletResponse对象"></a><strong>HttpServletResponse对象</strong></h1><h3 id="发送状态码相关的方法"><a href="#发送状态码相关的方法" class="headerlink" title="发送状态码相关的方法"></a><strong>发送状态码相关的方法</strong></h3></li>
 <li>setStatus(int status)方法</li>
 <li>sendError(int sc)方法<br> public void sendError(int code) throws java.io.IOException<br> public void sendError(int code, String message) throws java.io.IOException</li>
 </ol>
