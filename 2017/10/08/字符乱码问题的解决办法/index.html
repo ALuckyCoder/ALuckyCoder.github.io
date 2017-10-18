@@ -15,8 +15,7 @@
 字符与字节之间的转换是通过查码表完成的，将字符转换成字节的过程称为编码，将字节转换成字符的过程称为解码。
 如果编码和解码使用的码表不一致，就会导致乱码问题。
 
-解决办法方式1
-//设置">
+Response中的解决">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -278,17 +277,17 @@
             
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#简单的解释发生的原因"><span class="section table-of-contents-text">简单的解释发生的原因</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#解决办法"><span class="section table-of-contents-text">解决办法</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#简单的解释发生的原因"><span class="section table-of-contents-text">简单的解释发生的原因</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Response中的解决办法"><span class="section table-of-contents-text">Response中的解决办法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Request中的解决办法"><span class="section table-of-contents-text">Request中的解决办法</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#POST请求下"><span class="section table-of-contents-text">POST请求下</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#GET请求下"><span class="section table-of-contents-text">GET请求下</span></a></li></ol></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <h3 id="简单的解释发生的原因"><a href="#简单的解释发生的原因" class="headerlink" title="简单的解释发生的原因"></a><strong>简单的解释发生的原因</strong></h3><ul>
+                <h2 id="简单的解释发生的原因"><a href="#简单的解释发生的原因" class="headerlink" title="简单的解释发生的原因"></a><strong>简单的解释发生的原因</strong></h2><ul>
 <li>由于计算机中的数据都是以二进制形式存储的，因此，当传输文本时，就会发生字符和字节之间的转换。</li>
 <li>字符与字节之间的转换是通过查码表完成的，将字符转换成字节的过程称为编码，将字节转换成字符的过程称为解码。</li>
 <li>如果编码和解码使用的码表不一致，就会导致乱码问题。<br><img src="/images/encoding.png" alt="encoding"></li>
 </ul>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a><strong>解决办法</strong></h3><p><strong>方式1</strong></p>
+<h2 id="Response中的解决办法"><a href="#Response中的解决办法" class="headerlink" title="Response中的解决办法"></a><strong>Response中的解决办法</strong></h2><p><strong>方式1</strong></p>
 <pre><code>//设置HttpServletResponse使用utf-8编码
 response.setCharacterEncoding(&quot;utf-8&quot;);
 //通知浏览器使用utf-8解码
@@ -296,6 +295,9 @@ response.setHeader(&quot;Content-Type&quot;,&quot;text/html;charset=utf-8&quot;)
 </code></pre><p><strong>方式2</strong></p>
 <pre><code>//包含第一种方式的两个功能
 response.setContentType(&quot;text/html;charset=utf-8&quot;);
+</code></pre><h2 id="Request中的解决办法"><a href="#Request中的解决办法" class="headerlink" title="Request中的解决办法"></a><strong>Request中的解决办法</strong></h2><h3 id="POST请求下"><a href="#POST请求下" class="headerlink" title="POST请求下"></a><strong>POST请求下</strong></h3><pre><code>request.setCharacterEncoding(&quot;utf-8&quot;); //特别注意，这一行代码要在最前面
+</code></pre><h3 id="GET请求下"><a href="#GET请求下" class="headerlink" title="GET请求下"></a><strong>GET请求下</strong></h3><p>将接收到的字符进行一个编码转换如下</p>
+<pre><code>String username = new String(username.getBytes(),&quot;utf-8&quot;)
 </code></pre>
                 
 <p class="pink-link-context">
