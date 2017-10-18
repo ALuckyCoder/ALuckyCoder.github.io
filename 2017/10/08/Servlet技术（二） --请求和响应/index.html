@@ -303,8 +303,8 @@
 <li>setStatus(int status)方法</li>
 <li>sendError(int sc)方法<br> public void sendError(int code) throws java.io.IOException<br> public void sendError(int code, String message) throws java.io.IOException</li>
 </ol>
-<p>相应的状态代码参数的描述如下：<br><img src="../images/Servlet2XHTTPServletResponseXstatus.png" alt="statusmsg"></p>
-<h3 id="发送响应消息头相关的方法"><a href="#发送响应消息头相关的方法" class="headerlink" title="发送响应消息头相关的方法"></a><strong>发送响应消息头相关的方法</strong></h3><p><img src="../images/Servlet2XHTTPServletResponseXhead.png" alt="headmsg"></p>
+<p>相应的状态代码参数的描述如下：<br><img src="../images/Servlet2-HTTPServletResponse-status.png" alt="statusmsg"></p>
+<h3 id="发送响应消息头相关的方法"><a href="#发送响应消息头相关的方法" class="headerlink" title="发送响应消息头相关的方法"></a><strong>发送响应消息头相关的方法</strong></h3><p><img src="../images/Servlet2-HTTPServletResponse-head.png" alt="headmsg"></p>
 <h3 id="发送响应消息体的相关方法"><a href="#发送响应消息体的相关方法" class="headerlink" title="发送响应消息体的相关方法"></a><strong>发送响应消息体的相关方法</strong></h3><ul>
 <li>getOutputStream()方法 用于输出二进制格式的响应正文</li>
 <li>getWriter()方法 用于输出内容全为字符文本的网页文档<br>在此不进行过多的赘述和相关代码的实验了，需要注意的是：<br><strong>getOutputStream()和getWriter()方法都可以发送响应消息体，但是它们之间互相排斥，不可以同时使用，否则会发生IllegalStateException异常</strong></li>
@@ -313,11 +313,11 @@
 <h3 id="禁止浏览器缓存页面"><a href="#禁止浏览器缓存页面" class="headerlink" title="禁止浏览器缓存页面"></a><strong>禁止浏览器缓存页面</strong></h3><pre><code>response.setDateHeader(&quot;Expires&quot;,0);
 response.setHeader(&quot;Cache-Control&quot;,&quot;no-cache&quot;);
 response.setHeader(&quot;Pragma&quot;,&quot;no-cache&quot;);
-</code></pre><h3 id="请求重定向（重要）"><a href="#请求重定向（重要）" class="headerlink" title="请求重定向（重要）"></a><strong>请求重定向（重要）</strong></h3><p>工作原理如下：<br><img src="../images/Servlet2XHTTPServletResponseXsendRedirect.png" alt="sendRedirect"><br>方法如下：<br>    public void sendRedirect(java.lang.String location) throws java.io.IOException<br><strong>在请求重定向的过程中，传输的信息会丢失</strong></p>
+</code></pre><h3 id="请求重定向（重要）"><a href="#请求重定向（重要）" class="headerlink" title="请求重定向（重要）"></a><strong>请求重定向（重要）</strong></h3><p>工作原理如下：<br><img src="/images/Servlet2-HTTPServletResponse-sendRedirect.png" alt="sendRedirect"><br>方法如下：<br>    public void sendRedirect(java.lang.String location) throws java.io.IOException<br><strong>在请求重定向的过程中，传输的信息会丢失</strong></p>
 <h1 id="HttpServletRequest对象"><a href="#HttpServletRequest对象" class="headerlink" title="**HttpServletRequest对象"></a>**HttpServletRequest对象</h1><h3 id="获取请求行信息的相关方法"><a href="#获取请求行信息的相关方法" class="headerlink" title="获取请求行信息的相关方法"></a><strong>获取请求行信息的相关方法</strong></h3><p>在这一小节里面主要是HTTP头字段的相关操作，所以掌握HTTP头字段和HTTP协议是十分有必要的，详情请看<a href="#">关于HTTP协议</a></p>
 <ul>
-<li>当访问Servlet时，会在请求消息的请求行中，包含请求方法、请求资源名，请求路径等信息，为了获取这些信息，在HttpServletRequest接口中，定义了一系列用于获取请求行信息的方法，如下表所示<br><img src="../images/Servlet2XHTTPServletRequestXrowinfo1.png" alt="rowinfo1"><br><img src="../images/Servlet2XHTTPServletRequestXrowinfo2.png" alt="rowinfo1"><br>如上表所示，相关方法的效果已经表述的很详近了，在此不进行代码实验了</li>
-<li>当请求Servlet时，需要通过请求头向服务器传递附加信息，例如，客户端可以接受的数据类型，压缩方式，语言等等，具体方法如下表所示<br><img src="../images/Servlet2XHTTPServletRequestXrowinfo3.png" alt="rowinfo3"><br><img src="../images/Servlet2XHTTPServletRequestXrowinfo4.png" alt="rowinfo4">)</li>
+<li>当访问Servlet时，会在请求消息的请求行中，包含请求方法、请求资源名，请求路径等信息，为了获取这些信息，在HttpServletRequest接口中，定义了一系列用于获取请求行信息的方法，如下表所示<br><img src="../images/Servlet2-HTTPServletRequest-rowinfo1.png" alt="rowinfo1"><br><img src="../images/Servlet2-HTTPServletRequest-rowinfo2.png" alt="rowinfo1"><br>如上表所示，相关方法的效果已经表述的很详近了，在此不进行代码实验了</li>
+<li>当请求Servlet时，需要通过请求头向服务器传递附加信息，例如，客户端可以接受的数据类型，压缩方式，语言等等，具体方法如下表所示<br><img src="../images/Servlet2-HTTPServletRequest-rowinfo3.png" alt="rowinfo3"><br><img src="../images/Servlet2-HTTPServletRequest-rowinfo4.png" alt="rowinfo4">)</li>
 </ul>
 <h3 id="利用referer请求头防止”盗链”"><a href="#利用referer请求头防止”盗链”" class="headerlink" title="利用referer请求头防止”盗链”"></a><strong>利用referer请求头防止”盗链”</strong></h3><p><strong>实现思路如下</strong></p>
 <ol>
@@ -327,8 +327,8 @@ response.setHeader(&quot;Pragma&quot;,&quot;no-cache&quot;);
 </ol>
 <p><strong>主要的servlet代码如下</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</div><div class="line">	response.setContentType(&quot;text/html; charset=utf-8&quot;);</div><div class="line">	PrintWriter out = response.getWriter();</div><div class="line">	String referer = request.getHeader(&quot;referer&quot;);</div><div class="line">	String sitestart = &quot;http://&quot; + request.getServerName();</div><div class="line">	if (referer != null &amp;&amp; referer.startsWith(sitestart))</div><div class="line">	&#123;</div><div class="line">		out.println(referer + &quot;&lt;br/&gt;&quot;);</div><div class="line">		out.println(&quot;你可以下载....&quot;);</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		out.println(&quot;您不是从本站链接过来的，三秒后将跳转到本站地址，如果没有反应请点击下面的链接&quot;);</div><div class="line">		out.println(&quot;&lt;a href=&apos;/test1/index.html&apos;&gt;downloadindex&lt;/a&gt;&quot;);</div><div class="line">		response.setHeader(&quot;Refresh&quot;, &quot;3;URL=/test1/index.html&quot;);</div><div class="line">	&#125;</div><div class="line">		</div><div class="line">	out.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>至于跳转到的网页代码，在此就不再贴出来了</p>
-<h3 id="获取请求参数"><a href="#获取请求参数" class="headerlink" title="获取请求参数"></a><strong>获取请求参数</strong></h3><p><img src="../images/Servlet2XHTTPServletRequestXParameter.png" alt="Parameter"><br>这些方法基本上是用来处理表单数据的，没什么太多需要注意的地方，暂时不贴代码了</p>
-<h3 id="获取网络连接信息"><a href="#获取网络连接信息" class="headerlink" title="获取网络连接信息"></a><strong>获取网络连接信息</strong></h3><p><img src="../images/Servlet2XHTTPServletRequestXnetwork1.png" alt="network1"><br><img src="../images/Servlet2XHTTPServletRequestXnetwork2.png" alt="network1"><br>以上就不再添加代码了，根据实际情况进行代码的编写就可以了</p>
+<h3 id="获取请求参数"><a href="#获取请求参数" class="headerlink" title="获取请求参数"></a><strong>获取请求参数</strong></h3><p><img src="../images/Servlet2-HTTPServletRequest-Parameter.png" alt="Parameter"><br>这些方法基本上是用来处理表单数据的，没什么太多需要注意的地方，暂时不贴代码了</p>
+<h3 id="获取网络连接信息"><a href="#获取网络连接信息" class="headerlink" title="获取网络连接信息"></a><strong>获取网络连接信息</strong></h3><p><img src="../images/Servlet2-HTTPServletRequest-network1.png" alt="network1"><br><img src="../images/Servlet2-HTTPServletRequest-network2.png" alt="network1"><br>以上就不再添加代码了，根据实际情况进行代码的编写就可以了</p>
 <h3 id="通过request对象传递数据（重要）"><a href="#通过request对象传递数据（重要）" class="headerlink" title="通过request对象传递数据（重要）"></a><strong>通过request对象传递数据（重要）</strong></h3><table>
 <thead>
 <tr>
@@ -382,8 +382,8 @@ response.setHeader(&quot;Pragma&quot;,&quot;no-cache&quot;);
 </tbody>
 </table>
 <p>接下来进行最重要的两个概念了：</p>
-<h4 id="请求转发"><a href="#请求转发" class="headerlink" title="请求转发"></a><strong>请求转发</strong></h4><p>原理如下图所示<br><img src="../images/Servlet2XHTTPServletRequestXforward.png" alt="forward"><br><strong>在请求转发的过程中传输的信息不会丢失</strong>。</p>
-<h3 id="请求包含"><a href="#请求包含" class="headerlink" title="请求包含"></a><strong>请求包含</strong></h3><p>原理如下图所示<br><img src="../images/Servlet2XHTTPServletRequestXinclude.png" alt="forward"></p>
+<h4 id="请求转发"><a href="#请求转发" class="headerlink" title="请求转发"></a><strong>请求转发</strong></h4><p>原理如下图所示<br><img src="../images/Servlet2-HTTPServletRequest-forward.png" alt="forward"><br><strong>在请求转发的过程中传输的信息不会丢失</strong>。</p>
+<h3 id="请求包含"><a href="#请求包含" class="headerlink" title="请求包含"></a><strong>请求包含</strong></h3><p>原理如下图所示<br><img src="../images/Servlet2-HTTPServletRequest-include.png" alt="forward"></p>
 
                 
 <p class="pink-link-context">
