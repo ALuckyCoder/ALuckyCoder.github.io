@@ -555,8 +555,12 @@ dr-xr-x---. 16 root root 4096 10月 17 18:53 ..
 -rw-r--r--.  1 root root   72 10月 17 18:48 bbb
 -rw-r--r--.  1 root root 5172 10月 17 18:44 man_db.conf
 -rw-r-
-</code></pre><p>运行 <code>vim man_db.conf bbb</code>用 <code>:files</code> 查看可以得到如下结果<br>    :files<br>    1 %a   “man_db.conf”                  第 27 行<br>    2      “bbb”                          第 0 行<br>    请按 ENTER 或其它命令继续</p>
-<p>这样可以回到任意文件下进行编辑，并且能够随意地切换，必要的时候可以将man_db.conf下的内容复制到bbb中。<br>假如我要将man_db.conf中的第一行到第四行的内容复制到bbb的末尾，进行如下操作即可：</p>
+</code></pre><p>运行 <code>vim man_db.conf bbb</code>用 <code>:files</code> 查看可以得到如下结果</p>
+<pre><code>:files
+1 %a   &quot;man_db.conf&quot;                  第 27 行
+2      &quot;bbb&quot;                          第 0 行
+请按 ENTER 或其它命令继续
+</code></pre><p>这样可以回到任意文件下进行编辑，并且能够随意地切换，必要的时候可以将man_db.conf下的内容复制到bbb中。<br>假如我要将man_db.conf中的第一行到第四行的内容复制到bbb的末尾，进行如下操作即可：</p>
 <ol>
 <li>执行 <code>gg</code> 到文本内容的开头</li>
 <li>执行 <code>4yy</code> 复制接下来的四行</li>
