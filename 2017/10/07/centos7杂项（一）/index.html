@@ -175,14 +175,6 @@ centos7中yum升级被PackageKit锁定v">
             
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/centos7/">
-                    centos7 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Tomcat与Java-Web/">
                     Tomcat与Java-Web <span class="right">4 篇</span></a>
                 </a>
@@ -191,8 +183,8 @@ centos7中yum升级被PackageKit锁定v">
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/记录/">
-                    记录 <span class="right">2 篇</span></a>
+                <a class="no-padding" href="/categories/centos7/">
+                    centos7 <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -201,6 +193,14 @@ centos7中yum升级被PackageKit锁定v">
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/centos7杂项/">
                     centos7杂项 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/记录/">
+                    记录 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -288,7 +288,7 @@ centos7中yum升级被PackageKit锁定v">
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7中安装ntfs-3g"><span class="section table-of-contents-text">centos7中安装ntfs-3g</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7中yum升级被PackageKit锁定"><span class="section table-of-contents-text">centos7中yum升级被PackageKit锁定</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7下自动开机挂载"><span class="section table-of-contents-text">centos7下自动开机挂载</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7下yum安装mplayer"><span class="section table-of-contents-text">centos7下yum安装mplayer</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#小知识点记录"><span class="section table-of-contents-text">小知识点记录</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7中安装ntfs-3g"><span class="section table-of-contents-text">centos7中安装ntfs-3g</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7中yum升级被PackageKit锁定"><span class="section table-of-contents-text">centos7中yum升级被PackageKit锁定</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7下自动开机挂载"><span class="section table-of-contents-text">centos7下自动开机挂载</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7下yum安装mplayer"><span class="section table-of-contents-text">centos7下yum安装mplayer</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#小知识点记录"><span class="section table-of-contents-text">小知识点记录</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#centos7中一些文件的含义"><span class="section table-of-contents-text">centos7中一些文件的含义</span></a></li></ol>
 </div>
 
 
@@ -304,7 +304,11 @@ centos7中yum升级被PackageKit锁定v">
 /dev/sda3 /mnt/data ntfs default 0 1
 </code></pre><p>第一列是第一列是分区名，第二列是需要挂载的路径,第三列是该分区的文件格式,然后注意挂载目录的权限设置即可</p>
 <h3 id="centos7下yum安装mplayer"><a href="#centos7下yum安装mplayer" class="headerlink" title="centos7下yum安装mplayer"></a><strong>centos7下yum安装mplayer</strong></h3><p>To be continue……</p>
-<h3 id="小知识点记录"><a href="#小知识点记录" class="headerlink" title="小知识点记录"></a><strong>小知识点记录</strong></h3><p>linux下的垃圾回收站是/dev/null</p>
+<h3 id="小知识点记录"><a href="#小知识点记录" class="headerlink" title="小知识点记录"></a><strong>小知识点记录</strong></h3><p><strong>linux下的垃圾回收站是/dev/null</strong></p>
+<p><strong>关于RANDOM</strong>：RANDOM变量内容介于0~32767之间执行 <code>echo $RANDOM</code> 时，系统就会主动的随机取出一个介于0~32767的数值。可以用 <code>declare -i number=$RANDOM*10/32768</code> 设置number取0~9之间的数值<br>用set可以观察所有变量（包括环境变量和自定义变量）</p>
+<p><strong>bash默认的组合键如下</strong><br>| 组合按键 | 执行结果 |<br>| :——–: | :——–: |<br>| Ctrl + C | 终止目前的命令 |<br>| Ctrl + D | 输入结束（EOF） |<br>| Ctrl + M | 就是Enter |<br>| Ctrl + S | 暂停屏幕的输出 |<br>| Ctrl + Q | 恢复屏幕的输出 |<br>| Ctrl + U | 在提示符下，将整行命令删除 |<br>| Ctrl + Z | 暂停目前的命令 |</p>
+<p><strong>bash下常用的通配符</strong><br>| 符号 | 意义 |<br>| :—-: | :—-: |<br>| <em> | 代表0个到无穷多个任意字符 |<br>| ? | 代表一定有一个任意字符 |<br>| [] | 代表中括号内的任意一个字符，如[abcd]表示的是一定有一个字符，可能是a,b,c,d中的任何一个 |<br>| [-] | 减号在中括号内，代表在编码内的所有字符，如：[0-9]代表0到9之间的所有数字, <em>*因为数字的语系编码是连续的</em></em> |<br>| [^] | 表示反向选择，例如[^abc]代表一定有一个字符，这个字符不是a,b,c中的任何一个 |</p>
+<h3 id="centos7中一些文件的含义"><a href="#centos7中一些文件的含义" class="headerlink" title="centos7中一些文件的含义"></a><strong>centos7中一些文件的含义</strong></h3><p>/etc/shells：提供可用shell的相关信息<br>/lib/modules/${uname -r}/kernel：核心的板块目录<br>/dev/random：随机数生成器文件<br>~/.bash_history：记录历史命令<br>/etc/issue：记录存储进系统画面显示的相关信息<br>/etc/motd：记录进系统后提示给用户的相应信息</p>
 
                 
 <p class="pink-link-context">
