@@ -306,8 +306,76 @@ centos7中yum升级被PackageKit锁定v">
 <h3 id="centos7下yum安装mplayer"><a href="#centos7下yum安装mplayer" class="headerlink" title="centos7下yum安装mplayer"></a><strong>centos7下yum安装mplayer</strong></h3><p>To be continue……</p>
 <h3 id="小知识点记录"><a href="#小知识点记录" class="headerlink" title="小知识点记录"></a><strong>小知识点记录</strong></h3><p><strong>linux下的垃圾回收站是/dev/null</strong></p>
 <p><strong>关于RANDOM</strong>：RANDOM变量内容介于0~32767之间执行 <code>echo $RANDOM</code> 时，系统就会主动的随机取出一个介于0~32767的数值。可以用 <code>declare -i number=$RANDOM*10/32768</code> 设置number取0~9之间的数值<br>用set可以观察所有变量（包括环境变量和自定义变量）</p>
-<p><strong>bash默认的组合键如下</strong><br>| 组合按键 | 执行结果 |<br>| :——–: | :——–: |<br>| Ctrl + C | 终止目前的命令 |<br>| Ctrl + D | 输入结束（EOF） |<br>| Ctrl + M | 就是Enter |<br>| Ctrl + S | 暂停屏幕的输出 |<br>| Ctrl + Q | 恢复屏幕的输出 |<br>| Ctrl + U | 在提示符下，将整行命令删除 |<br>| Ctrl + Z | 暂停目前的命令 |</p>
-<p><strong>bash下常用的通配符</strong><br>| 符号 | 意义 |<br>| :—-: | :—-: |<br>| <em> | 代表0个到无穷多个任意字符 |<br>| ? | 代表一定有一个任意字符 |<br>| [] | 代表中括号内的任意一个字符，如[abcd]表示的是一定有一个字符，可能是a,b,c,d中的任何一个 |<br>| [-] | 减号在中括号内，代表在编码内的所有字符，如：[0-9]代表0到9之间的所有数字, <em>*因为数字的语系编码是连续的</em></em> |<br>| [^] | 表示反向选择，例如[^abc]代表一定有一个字符，这个字符不是a,b,c中的任何一个 |</p>
+<p><strong>bash默认的组合键如下</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">组合按键</th>
+<th style="text-align:center">执行结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ctrl + C</td>
+<td style="text-align:center">终止目前的命令</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl + D</td>
+<td style="text-align:center">输入结束（EOF）</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl + M</td>
+<td style="text-align:center">就是Enter</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl + S</td>
+<td style="text-align:center">暂停屏幕的输出</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl + Q</td>
+<td style="text-align:center">恢复屏幕的输出</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl + U</td>
+<td style="text-align:center">在提示符下，将整行命令删除</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl + Z</td>
+<td style="text-align:center">暂停目前的命令</td>
+</tr>
+</tbody>
+</table>
+<p><strong>bash下常用的通配符</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">代表0个到无穷多个任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:center">代表一定有一个任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">代表中括号内的任意一个字符，如[abcd]表示的是一定有一个字符，可能是a,b,c,d中的任何一个</td>
+</tr>
+<tr>
+<td style="text-align:center">[-]</td>
+<td style="text-align:center">减号在中括号内，代表在编码内的所有字符，如：[0-9]代表0到9之间的所有数字, <strong>因为数字的语系编码是连续的</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">[^]</td>
+<td style="text-align:center">表示反向选择，例如[^abc]代表一定有一个字符，这个字符不是a,b,c中的任何一个</td>
+</tr>
+</tbody>
+</table>
 <h3 id="centos7中一些文件的含义"><a href="#centos7中一些文件的含义" class="headerlink" title="centos7中一些文件的含义"></a><strong>centos7中一些文件的含义</strong></h3><p>/etc/shells：提供可用shell的相关信息<br>/lib/modules/${uname -r}/kernel：核心的板块目录<br>/dev/random：随机数生成器文件<br>~/.bash_history：记录历史命令<br>/etc/issue：记录存储进系统画面显示的相关信息<br>/etc/motd：记录进系统后提示给用户的相应信息</p>
 
                 
